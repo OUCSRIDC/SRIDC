@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>通用模板</title>
+<script type="text/javascript" src="extends/extends.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="mobile.css" type="text/css" />
+<link rel="stylesheet" href="media.css" type="text/css" />
+</head>
+<body>
+<!--Start||head-->
+<div class="wrapper header" id="header">
+	<div class="inner">
+	    <!--头部信息-->
+		<div class="head" >
+			<!--logo开始-->
+			<div class="sitelogo" frag="面板01">
+				<a class="navi-aside-toggle"></a>
+				<div class="sitelogocon" frag="窗口01" portletmode="simpleSiteAttri">
+					<span frag="窗口内容"><a href="{站点URL}" title="返回{站点名称}首页">{站点Logo}</a></span> 
+				</div>
+			</div>
+			<!--站点名称-->
+			<div class="sitetitle" frag="面板02">
+				<div class="sitetitlecon" frag="窗口02" portletmode="simpleSiteName">
+					<span frag="窗口内容">站点名称</span>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!--End||head-->
+
+<!--Start||nav-->
+<div class="wrapper nav wp-navi" id="nav">
+	<div class="inner">
+	    <!--导航-->
+		<div class="navbar" frag="面板1">
+			<div class="navbox" frag="窗口1">
+				<div frag="窗口内容">
+					<div class="navi-slide-head">
+		    			<h3 class="navi-slide-title">导航</h3>
+		    			<a class="navi-slide-arrow"></a>
+		    		</div>
+					<!--[NaviStructBegin]-->
+					<ul class="wp-menu clearfix" data-nav-aside='{"title":"导航","index":0}'>
+						<!--[NaviItemCycleBegin]-->
+						<li class="menu-item {级别样式}"> <a class="menu-link" href="{栏目URL}" target="{打开方式}">{栏目名称}</a>
+							<!--[MenuStructBegin]-->
+							<em class="menu-switch-arrow"></em>
+							<ul class="sub-menu clearfix">
+								<!--[MenuItemCycleBegin]-->
+								<li class="sub-item {级别样式}"><a class="sub-link" href="{栏目URL}" target="{打开方式}">{栏目名称}</a>
+									<!--[SubMenuList]-->
+								</li>
+								<!--[MenuItemCycleEnd]-->
+							</ul>
+							<!--[MenuStructEnd]-->
+						</li>
+						<!--[NaviItemCycleEnd]-->
+					</ul>
+					<!--[NaviStructEnd]-->
+				</div>
+		    </div>
+		</div>
+    </div>
+</div>
+
+<!--aside导航-->
+<div class="wp-navi-aside" id="wp-navi-aside">
+	<div class="aside-inner">
+		<div class="navi-aside-wrap"></div>
+	</div>
+	<div class="navi-aside-mask"></div>
+</div>
+<!--End||nav-->
+
+<!--大图开始-->
+<div class="wrapper mbanner" id="mbanner">
+	<div class="inner clearfix">
+		<div class="banner" frag="面板2">
+			<div frag="窗口2">
+				<div frag="窗口内容">
+					<div class="focus" data-focus>
+						<!--[InfoCycleBegin]-->
+						<img src="{图片路径}" data-focus-title="{标题}" data-focus-url="{文章URL}">
+						<!--[InfoCycleEnd]-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//大图结束-->
+
+<!--Start||content-->
+<div class="wrapper content" id="container">
+	<div class="inner clearfix">
+  	<div class="mod clearfix"> 
+    	<div class="ml" frag="面板10">
+			<div class="post post1 post-10 mbox" frag="窗口10">
+				<div class="tt">
+					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题10</span></span></h3>
+					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
+				</div>
+				<div class="con">
+					<div frag="窗口内容">
+						<ul class="news_list clearfix">
+							<!--[InfoCycleBegin]-->
+							<li class="news n{序号值} clearfix">
+								<span class="news_title">{标题}</span>
+								<span class="news_meta">{发布时间}</span>
+							</li>
+							<!--[InfoCycleEnd]-->
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="post post1 post-11 mbox" frag="窗口11">
+				<div class="tt">
+					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题11</span></span></h3>
+					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
+				</div>
+				<div class="con">
+					<div frag="窗口内容">
+						<ul class="news_list clearfix">
+							<!--[InfoCycleBegin]-->
+							<li class="news n{序号值} clearfix">
+								<span class="news_title">{标题}</span>
+								<span class="news_meta">{发布时间}</span>
+							</li>
+							<!--[InfoCycleEnd]-->
+						</ul>
+					</div>
+				</div>
+			</div>
+       
+        </div>
+
+    	<div class="mc" frag="面板20">
+			<div class="post post-21 mbox" frag="窗口21">
+				<div class="tt">
+					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题21</span></span></h3>
+					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
+				</div>
+				<div class="con">
+					<div frag="窗口内容">
+						<ul class="news_list clearfix">
+							<!--[InfoCycleBegin]-->
+							<li class="news n{序号值} clearfix">
+								<span class="news_title">{标题}</span>
+								<span class="news_meta">{发布时间}</span>
+							</li>
+							<!--[InfoCycleEnd]-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mr" frag="面板30">
+			<div class="post post-31 mbox" frag="窗口31">
+				<div class="tt">
+					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题31</span></span></h3>
+					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
+				</div>
+				<div class="con">
+					<div frag="窗口内容">
+						<ul class="news_list clearfix">
+							<!--[InfoCycleBegin]-->
+							<li class="news n{序号值} clearfix">
+								<span class="news_title">{标题}</span>
+								<span class="news_meta">{发布时间}</span>
+							</li>
+							<!--[InfoCycleEnd]-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>
+<!--End||content-->
+
+<!--Start||footer-->
+<div class="wrapper footer" id="footer">
+	<div class="inner">
+		<div class="foot" frag="面板09">
+			<div frag="窗口09" portletmode="simpleSiteAttri">
+				<div frag="窗口内容">{站点版权}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--End||footer-->
+</body>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 初始化SDAPP
+	new SDAPP({
+		'focus':{
+			zWidth:1000,
+			zHeight:366,
+			pagination: true
+		},
+		"menu":{
+			type:"slide"
+		}
+	});
+});
+</script>
+</html>

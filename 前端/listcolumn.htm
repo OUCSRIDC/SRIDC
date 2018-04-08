@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>通用模板</title>
+<script type="text/javascript" src="extends/extends.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="mobile.css" type="text/css" />
+<link rel="stylesheet" href="media.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap-theme.css.map" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css.map" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+<!--Start||head-->
+<div class="wrapper header" id="header">
+	<div class="inner">
+	    <!--头部信息-->
+		<div class="head" >
+			<!--logo开始-->
+			<div class="sitelogo" frag="面板01">
+				<a class="navi-aside-toggle"></a>
+				<div class="sitelogocon" frag="窗口01" portletmode="simpleSiteAttri">
+					<span frag="窗口内容"><a href="{站点URL}" title="返回{站点名称}首页">{站点Logo}</a></span> 
+				</div>
+			</div>
+			<!--站点名称-->
+			<div class="sitetitle" frag="面板02">
+				<div class="sitetitlecon" frag="窗口02" portletmode="simpleSiteName">
+					<span frag="窗口内容">站点名称</span>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!--End||head-->
+
+<!--Start||nav-->
+<div class="wrapper nav wp-navi" id="nav">
+	<div class="inner">
+	    <!--导航-->
+		<div class="navbar" frag="面板1">
+			<div class="navbox" frag="窗口1">
+				<div frag="窗口内容">
+					<div class="navi-slide-head">
+		    			<h3 class="navi-slide-title">导航</h3>
+		    			<a class="navi-slide-arrow"></a>
+		    		</div>
+					<!--[NaviStructBegin]-->
+					<ul class="wp-menu clearfix" data-nav-aside='{"title":"导航","index":0}'>
+						<!--[NaviItemCycleBegin]-->
+						<li class="menu-item {级别样式}"> <a class="menu-link" href="{栏目URL}" target="{打开方式}">{栏目名称}</a>
+							<!--[MenuStructBegin]-->
+							<em class="menu-switch-arrow"></em>
+							<ul class="sub-menu clearfix">
+								<!--[MenuItemCycleBegin]-->
+								<li class="sub-item {级别样式}"><a class="sub-link" href="{栏目URL}" target="{打开方式}">{栏目名称}</a>
+									<!--[SubMenuList]-->
+								</li>
+								<!--[MenuItemCycleEnd]-->
+							</ul>
+							<!--[MenuStructEnd]-->
+						</li>
+						<!--[NaviItemCycleEnd]-->
+					</ul>
+					<!--[NaviStructEnd]-->
+				</div>
+		    </div>
+		</div>
+    </div>
+</div>
+
+<!--aside导航-->
+<div class="wp-navi-aside" id="wp-navi-aside">
+	<div class="aside-inner">
+		<div class="navi-aside-wrap"></div>
+	</div>
+	<div class="navi-aside-mask"></div>
+</div>
+<!--End||nav-->
+
+<!--Start||columnPicture-->
+    <div class="wrapper lbanner" id="lbanner" frag="面板10">
+    	<div class="inner" frag="窗口10" portletmode="simpleColumnAttri">
+    		<div frag="窗口内容">
+	    		<div class="banner"><img src="images/l-banner.jpg"></div>
+	    		<p class="column-name">{栏目名称}</p>
+	    	</div>
+    	</div>
+    </div>
+<!--End||columnPicture-->
+
+<!--Start||content-->
+<div class="wrapper" id="container">
+	<div class="inner">
+		<div class="col_menu">
+			<!--位置栏目-->
+			<div class="col_menu_head" frag="面板3">
+				<h3 class="col_name" frag="窗口3" portletmode="simpleColumnAnchor">
+					<span class="col_name_text">
+						<div frag="窗口内容">位置栏目</div>
+					</span>
+				</h3>
+				<a class="column-switch"></a>
+			</div>
+			
+			<!--栏目列表-->
+			<div class="col_menu_con" frag="面板4">
+				<div class="col_list" frag="窗口4" portletmode="simpleColumnList">
+					<div frag="窗口内容">
+						<!--[ColumnStructBegin]-->
+						<ul class="wp_listcolumn list-paddingleft-2">
+							<!--[ColumnCycleBegin]-->
+							<li class="wp_column {级别样式} {选中样式}">     
+									<a title="{栏目名称}" class="col_item_link {选中样式}" href="{栏目URL}"><span class="column-name">{栏目名称}</span></a><!--[SubColumnStructBegin]-->      
+								<ul class="sub_list list-paddingleft-2">
+									<!--[ColumnCycleBegin]-->
+									<li class="sub-item {级别样式} {选中样式}">             
+											<a title="{栏目名称}" class="sub-item-link {选中样式}" href="{栏目URL}" target="{打开方式}"><span class="column-name">{栏目名称}</span></a><!--[SubColumnList]-->               
+									</li><!--[ColumnCycleEnd]-->
+								</ul><!--[SubColumnStructEnd]-->
+							</li><!--[ColumnCycleEnd]-->
+						</ul>
+						<!--[ColumnStructEnd]-->			
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col_news">
+			<div class="col_news_box">
+				<!--栏目名称-->
+				<div class="col_news_head" frag="面板5">
+					<ul class="col_metas clearfix" frag="窗口5" portletmode="simpleColumnAttri">
+						 <div frag="窗口内容">
+							<li class="col_title"><h2>{栏目名称}</h2></li>
+							<li class="col_path"><span class="path_name">当前位置：</span>{当前位置}</li>
+						 </div>
+					</ul>
+				</div>
+				<!--文章列表-->
+				<div class="col_news_con" frag="面板6">
+					<div class="col_news_list" frag="窗口6" portletmode="simpleList">
+						<div frag="窗口内容" >					
+							<ul class="news_list list2">
+								<!--[InfoCycleBegin]-->
+								<li class="news n{序号值} clearfix">
+									<span class="news_title">{标题}</span>
+									<span class="news_meta">{发布时间}</span>
+								</li>
+								<!--[InfoCycleEnd]-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<!--End||content-->
+
+<!--Start||footer-->
+<div class="wrapper footer" id="footer">
+	<div class="inner">
+		<div class="foot" frag="面板09">
+			<div frag="窗口09" portletmode="simpleSiteAttri">
+				<div frag="窗口内容">{站点版权}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--End||footer-->
+</body>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	// 初始化SDAPP
+	new SDAPP({
+		'focus':{
+			zWidth:1200,
+			zHeight:500
+		},
+		"menu":{
+			type:"slide"
+		}
+	});
+});
+</script>
+</html>
