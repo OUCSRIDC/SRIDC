@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Login 的摘要说明
+/// GetHostInfoAll 的摘要说明
 /// </summary>
-public class Login
+public class GetHostInfoAll
 {
     private int status;
-    private Users data;
+    private List<Host> data;
 
     public int Status
     {
@@ -24,7 +24,7 @@ public class Login
         }
     }
 
-    public Users Data
+    public List<Host> Data
     {
         get
         {
@@ -37,7 +37,7 @@ public class Login
         }
     }
 
-    public Login()
+    public GetHostInfoAll()
     {
         //
         // TODO: 在此处添加构造函数逻辑

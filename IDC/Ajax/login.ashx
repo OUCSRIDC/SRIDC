@@ -23,18 +23,18 @@ public class login : IHttpHandler {
                 Users user = db.Users.SingleOrDefault(a => a.username == username && a.password == passwordMD);
                 if (user == null)
                 {
-                    login.setStatus(1000);
+                    login.Status = 1000;
                 }
                 else
                 {
-                    login.setStatus(200);
-                    login.setData(user);
+                    login.Status = 200;
+                    login.Data = user;
                 }
 
             }
             else
             {
-                login.setStatus(1001);
+                login.Status = 1001;
             }
             string json = JsonConvert.SerializeObject(login);
             context.Response.Write(json);
