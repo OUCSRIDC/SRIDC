@@ -34,6 +34,7 @@ public partial class HostPortInfo
     public int host_id { get; set; }
     public string portInfo { get; set; }
     public System.DateTime time { get; set; }
+    public int portNum { get; set; }
 }
 
 public partial class Users

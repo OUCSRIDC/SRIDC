@@ -8,6 +8,35 @@ using System.Web;
 /// </summary>
 public class SelectHostInfo
 {
+    private int status;
+    private string data;
+
+    public int Status
+    {
+        get
+        {
+            return status;
+        }
+
+        set
+        {
+            status = value;
+        }
+    }
+
+    public string Data
+    {
+        get
+        {
+            return data;
+        }
+
+        set
+        {
+            data = value;
+        }
+    }
+
     public SelectHostInfo()
     {
         //

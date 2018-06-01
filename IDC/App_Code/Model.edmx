@@ -33,6 +33,7 @@
           <Property Name="host_id" Type="int" Nullable="false" />
           <Property Name="portInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="time" Type="datetime" Nullable="false" />
+          <Property Name="portNum" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -82,6 +83,7 @@
           <Property Name="host_id" Type="Int32" Nullable="false" />
           <Property Name="portInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="portNum" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -133,6 +135,7 @@
                 <ScalarProperty Name="host_id" ColumnName="host_id" />
                 <ScalarProperty Name="portInfo" ColumnName="portInfo" />
                 <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="portNum" ColumnName="portNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
