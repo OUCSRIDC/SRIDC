@@ -55,9 +55,9 @@ def network():
     # 获取MAC和IP地址
     for interface in c.Win32_NetworkAdapterConfiguration(IPEnabled=1):
         print("MAC: %s" % interface.MACAddress)
-    for ip_address in interface.IPAddress:
-        print("ip_add: %s" % ip_address)
-    print("\n")
+        for ip_address in interface.IPAddress:
+            print("ip_add: %s" % ip_address)
+        print("\n")
 
     # 获取自启动程序的位置
     for s in c.Win32_StartupCommand():
@@ -77,7 +77,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    network()
+    # main()
     # print(platform.system())
     # print(platform.release())
     # print(platform.version())
