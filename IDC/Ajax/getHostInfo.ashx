@@ -3,9 +3,10 @@
 using System;
 using System.Web;
 using System.Collections.Generic;
+using System.Web.SessionState;
 using System.Linq;
 using Newtonsoft.Json;
-public class getHostInfo : IHttpHandler {
+public class getHostInfo : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";

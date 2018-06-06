@@ -3,7 +3,8 @@
 using System;
 using System.Web;
 using Newtonsoft.Json;
-public class setHostInfo : IHttpHandler {
+using System.Web.SessionState;
+public class setHostInfo : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest(HttpContext context)
     {

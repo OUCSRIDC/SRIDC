@@ -5,7 +5,8 @@ using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-public class selectHostInfo : IHttpHandler {
+using System.Web.SessionState;
+public class selectHostInfo : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
