@@ -2,10 +2,12 @@ import requests
 import function
 import datetime
 
+
 def getUrl():
     with open('url.txt', 'r')as f:
         url = f.read()
     return url
+
 
 def postInfo():
     s = requests.session()
@@ -17,8 +19,9 @@ def postInfo():
 
 
 def main():
-    postInfo()
-    # print(function.ipInfo())
+    # postInfo()
+    print(function.portInfo())
+
 
 if __name__ == '__main__':
     main()
