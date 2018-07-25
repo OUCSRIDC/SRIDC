@@ -29,7 +29,7 @@ body,textarea,input,button,select,keygen,legend {font:12px/1 arial,\5b8b\4f53; o
 .clearfix { display: block; *zoom:1; }
 
 /**全局样式**/
-body { font:12px/1 "Microsoft YaHei","Simsun", arial,\5b8b\4f53; color:#333; background:url(images/bg.png) repeat-x 0 0;}/*背景样式*/
+html body { font:12px/1 "Microsoft YaHei","Simsun", arial,\5b8b\4f53; color:#333; background: #276d84;}/*背景样式*/
 a {color:#333; text-decoration:none;}
 a:hover { color:#cd0200;}
 .wrapper { width:100%; margin:0 auto;}
@@ -38,27 +38,98 @@ a:hover { color:#cd0200;}
 /**页头开始**/
 #header {}
 #header .inner {}
-.head { width:100%; height:146px; position:relative; background:url(images/headbg.jpg) no-repeat 50% 0; position:relative;} /**页头部分**/
+.head { width:100%; height:146px; position:relative; position:relative;} /**页头部分**/
 .head .sitelogo{float:left;padding-top:30px;padding-left:30px;}
 .head .sitetitle {float:left;margin-top:45px; margin-left:20px;font-size:32px;font-weight:bold;color:#fff;} /**站点名称**/
-.navbar {width:100%; background:url(images/navbar.png) repeat-x 0 50%;} /**导航区域背景**/
-.navbar .navbox {width:980px; margin:0 auto;} /**导航窗口大小及位置**/
+body .navbar {width:100%; 
+	background: #ef4300;
+	min-height: 40px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #ff730e;
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;} /**导航区域背景**/
+.navbar .navbox {margin:0 auto;} /**导航窗口大小及位置**/
 
 /**导航样式：后台绑定时也可以定义配置**/
 .menu-switch-arrow { display: none;}
 .navbox .wp-menu { margin:0 auto; } /**导航高度**/
-.navbox .wp-menu .menu-item {display: inline-block;float: left;position: relative;z-index: 100;}
-.navbox .wp-menu .menu-item a.menu-link {display: inline-block;padding:0 21px;line-height: 39px;color: #fff;font-size: 15px;font-family:"Microsoft YaHei";}/**导航字体样式**/
+.navbox .wp-menu .menu-item {display: inline-block;float: right;position: relative;z-index: 100;}
+.navbox .wp-menu .menu-item a.menu-link {display: inline-block;padding:0 21px;color: #fff;font-size: 15px;font-family:"Microsoft YaHei";}/**导航字体样式**/
 .navbox .wp-menu .menu-item a.menu-link:hover,
-.navbox .wp-menu .menu-item a.menu-link.parent{ text-decoration: none; color: #fff; background-color: #949494}/**鼠标经过或当前选中时样式**/
-.navbox .sub-menu {background-color: #f2f2f2; display: none; position: absolute; left: 0; top: 39px; z-index: 100; min-width:110px;}/**菜单背景**/
-.navbox .sub-menu .sub-item { position: relative; white-space: nowrap; vertical-align: top; _zoom:1;border-bottom: 1px solid #ddd;}
-.navbox .sub-menu .sub-item a { display: block; color: #272727;line-height: 32px; padding:0 10px 0 20px; display: block; font-family:"Microsoft YaHei";}/**子菜单字体样式**/
+.navbox .wp-menu .menu-item a.menu-link.parent{ text-decoration: none; color: #fff; }/**鼠标经过或当前选中时样式**/
+.navbox .sub-menu {display: none; position: absolute; right: 0; top: 41px; z-index: 100; min-width:110px;border-radius: 6px;background: #2d2d2d; /* browsers that don't support rgba */
+    background: rgba(45,45,45,.15);
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d; /* browsers that don't support rgba */
+    border: 1px solid rgba(255,255,255,.15);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    }/**菜单背景**/
+.navbox .sub-menu .sub-item { position: relative; white-space: nowrap; vertical-align: top; _zoom:1;}
+.navbox .sub-menu .sub-item a { display: block; color: #fff;line-height: 32px; padding:0 10px 0 20px; display: block; font-family:"Microsoft YaHei";}/**子菜单字体样式**/
 .navbox .sub-menu .sub-item a:hover,
-.navbox .sub-menu .sub-item a.parent{ color:#06509C; display: block;}
+.navbox .sub-menu .sub-item a.parent{ color:#ff730e; display: block;background: rgba(45,45,45,.15);
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d; /* browsers that don't support rgba */
+    border: 1px solid rgba(255,255,255,.15);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;}
 .navbox .sub-menu .sub-menu { left: 100%; top: 0; z-index: 200; background-color: #e6e6e6; border-left: 1px solid #ddd;}
 /**slide导航**/
-.wp-navi .navi-slide-head { display: none; padding:0 10px; height: 49px;}
+.wp-navi .navi-slide-head { display: none; padding:0 10px; height: 49px;background: #ef4300;
+	min-height: 40px;
+    border: 1px solid #ff730e;
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;}
 .wp-navi .navi-slide-head .navi-slide-title { display: inline-block; float: left; font-weight: normal; color: #212121; font-size: 18px; line-height: 49px;}
 .wp-navi .navi-slide-head .navi-slide-arrow { display: block; width: 34px; height: 49px; float: right; background: url(img/menu-icon-arrow.png) no-repeat 50%;}
 
@@ -92,7 +163,7 @@ a:hover { color:#cd0200;}
 
 /**主体开始**/
 #container {/* padding:7px 0; */}
-#container .inner {background:#fff;width:978px;padding:10px;border:1px solid #e5e5e5;}
+#container .inner {background:#fff;width:978px;padding:10px;border:1px solid #e5e5e5;border-radius: 6px;}
 
 /**首页三列布局**/
 .mod {}
@@ -103,7 +174,7 @@ a:hover { color:#cd0200;}
 
 /**页脚开始**/
 #footer {}
-#footer .inner { padding:10px 0; border-top:2px solid #036; text-align:center;}
+#footer .inner { padding:10px 0;  text-align:center;}
 #footer .inner p { font-size:14px; line-height:20px; text-align:center;}
 #footer .inner p span { margin:0 3px;}
 
@@ -182,3 +253,40 @@ a:hover { color:#cd0200;}
 .article .entry .read p { margin-bottom:6px;}
 .article .entry .read img { max-width:840px; _width:expression(this.width > 940 ? "840px" : this.width); }  /**文章阅读部分图片大小限制**/
 
+.userhead{border-radius: 15px;margin: 4px 0;}
+.searchbox{
+	width: 50%;
+    height: 44px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+    background: #2d2d2d;
+    background: rgba(45,45,45,.15);
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    border: 1px solid rgba(255,255,255,.15);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+}
+form {
+    position: relative;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+form span{
+	color: #fff;
+    font-size: 18px;
+}
+body .table{
+	margin-bottom: 0px;
+}

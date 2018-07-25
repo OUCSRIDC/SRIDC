@@ -2,6 +2,7 @@
 .wp-navi .navi-slide-head { display: none; padding:0 10px; height: 40px;}
 .wp-navi .navi-slide-head .navi-slide-title { display: inline-block; float: left; font-weight: normal; color: #fff; font-size: 18px; line-height: 40px;}
 .wp-navi .navi-slide-head .navi-slide-arrow { display: block; width: 34px; height: 40px; float: right; background: url(css/img/menu-icon-arrow-white.png) no-repeat 50%;}
+.wp-navi .navi-slide-head .navi-slide-scan{display: block; width: 34px; height: 40px; float: left; background: url(css/img/scaner1.png) no-repeat 50%;} 
 
 /**aside导航**/
 .navi-aside-page {position: fixed;}

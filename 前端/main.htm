@@ -10,31 +10,9 @@
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="mobile.css" type="text/css" />
 <link rel="stylesheet" href="media.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-<!--Start||head-->
-<div class="wrapper header" id="header">
-	<div class="inner">
-	    <!--头部信息-->
-		<div class="head" >
-			<!--logo开始-->
-			<div class="sitelogo" frag="面板01">
-				<a class="navi-aside-toggle"></a>
-				<div class="sitelogocon" frag="窗口01" portletmode="simpleSiteAttri">
-					<span frag="窗口内容"><a href="{站点URL}" title="返回{站点名称}首页">{站点Logo}</a></span> 
-				</div>
-			</div>
-			<!--站点名称-->
-			<div class="sitetitle" frag="面板02">
-				<div class="sitetitlecon" frag="窗口02" portletmode="simpleSiteName">
-					<span frag="窗口内容">站点名称</span>
-				</div>
-			</div>
-		</div>
-    </div>
-</div>
-<!--End||head-->
-
 <!--Start||nav-->
 <div class="wrapper nav wp-navi" id="nav">
 	<div class="inner">
@@ -43,18 +21,22 @@
 			<div class="navbox" frag="窗口1">
 				<div frag="窗口内容">
 					<div class="navi-slide-head">
-		    			<h3 class="navi-slide-title">导航</h3>
+		    			<!-- <h3 class="navi-slide-title">导航</h3> -->
 		    			<a class="navi-slide-arrow"></a>
+		    			<a class="navi-slide-scan"></a>
 		    		</div>
 					<!--[NaviStructBegin]-->
 					<ul class="wp-menu clearfix" data-nav-aside='{"title":"导航","index":0}'>
 						<!--[NaviItemCycleBegin]-->
-						<li class="menu-item {级别样式}"> <a class="menu-link" href="{栏目URL}" target="{打开方式}">{栏目名称}</a>
+						<li class="menu-item {级别样式}"> <a class="menu-link" href="{栏目URL}" target="{打开方式}"><img class="userhead" src="images/head.jpg" height="30" width="30" alt=""></a>
 							<!--[MenuStructBegin]-->
 							<em class="menu-switch-arrow"></em>
 							<ul class="sub-menu clearfix">
 								<!--[MenuItemCycleBegin]-->
-								<li class="sub-item {级别样式}"><a class="sub-link" href="{栏目URL}" target="{打开方式}">{栏目名称}</a>
+								<li class="sub-item {级别样式}"><a class="sub-link" href="{栏目URL}" target="{打开方式}">个人中心</a>
+									<!--[SubMenuList]-->
+								</li>
+								<li class="sub-item {级别样式}"><a class="sub-link" href="{栏目URL}" target="{打开方式}">设置</a>
 									<!--[SubMenuList]-->
 								</li>
 								<!--[MenuItemCycleEnd]-->
@@ -79,17 +61,41 @@
 </div>
 <!--End||nav-->
 
+<!--Start||head-->
+<div class="wrapper header" id="header">
+	<div class="inner">
+	    <!--头部信息-->
+		<div class="head" >
+			<!--logo开始-->
+			<!-- <div class="sitelogo" frag="面板01">
+				<a class="navi-aside-toggle"></a>
+				<div class="sitelogocon" frag="窗口01" portletmode="simpleSiteAttri">
+					<span frag="窗口内容"><a href="{站点URL}" title="返回{站点名称}首页">{站点Logo}</a></span> 
+				</div>
+			</div> -->
+			<!--站点名称-->
+			<div class="sitetitle" frag="面板02">
+				<div class="sitetitlecon" frag="窗口02" portletmode="simpleSiteName">
+					<span frag="窗口内容">IPV6网络IDC机房托管服务监管系统</span>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!--End||head-->
+
 <!--大图开始-->
 <div class="wrapper mbanner" id="mbanner">
 	<div class="inner clearfix">
 		<div class="banner" frag="面板2">
 			<div frag="窗口2">
 				<div frag="窗口内容">
-					<div class="focus" data-focus>
 						<!--[InfoCycleBegin]-->
-						<img src="{图片路径}" data-focus-title="{标题}" data-focus-url="{文章URL}">
+						<form action="" method="post">
+			                <input type="text" name="username" class="searchbox" value="Search">
+			                <a href=""><span class="glyphicon glyphicon-search"></span></a>
+			            </form>
 						<!--[InfoCycleEnd]-->
-					</div>
 				</div>
 			</div>
 		</div>
@@ -101,87 +107,54 @@
 <div class="wrapper content" id="container">
 	<div class="inner clearfix">
   	<div class="mod clearfix"> 
-    	<div class="ml" frag="面板10">
-			<div class="post post1 post-10 mbox" frag="窗口10">
-				<div class="tt">
-					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题10</span></span></h3>
-					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
-				</div>
-				<div class="con">
-					<div frag="窗口内容">
-						<ul class="news_list clearfix">
-							<!--[InfoCycleBegin]-->
-							<li class="news n{序号值} clearfix">
-								<span class="news_title">{标题}</span>
-								<span class="news_meta">{发布时间}</span>
-							</li>
-							<!--[InfoCycleEnd]-->
-						</ul>
-					</div>
-				</div>
-			</div>
-			
-			<div class="post post1 post-11 mbox" frag="窗口11">
-				<div class="tt">
-					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题11</span></span></h3>
-					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
-				</div>
-				<div class="con">
-					<div frag="窗口内容">
-						<ul class="news_list clearfix">
-							<!--[InfoCycleBegin]-->
-							<li class="news n{序号值} clearfix">
-								<span class="news_title">{标题}</span>
-								<span class="news_meta">{发布时间}</span>
-							</li>
-							<!--[InfoCycleEnd]-->
-						</ul>
-					</div>
-				</div>
-			</div>
-       
-        </div>
-
-    	<div class="mc" frag="面板20">
-			<div class="post post-21 mbox" frag="窗口21">
-				<div class="tt">
-					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题21</span></span></h3>
-					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
-				</div>
-				<div class="con">
-					<div frag="窗口内容">
-						<ul class="news_list clearfix">
-							<!--[InfoCycleBegin]-->
-							<li class="news n{序号值} clearfix">
-								<span class="news_title">{标题}</span>
-								<span class="news_meta">{发布时间}</span>
-							</li>
-							<!--[InfoCycleEnd]-->
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="mr" frag="面板30">
-			<div class="post post-31 mbox" frag="窗口31">
-				<div class="tt">
-					<h3 class="tit"><span class="title" frag="标题"><span frag="标题内容">标题31</span></span></h3>
-					<div class="more_btn" frag="按钮" type="更多"><span class="more_text" frag="按钮内容">更多&gt;&gt;</span></div>
-				</div>
-				<div class="con">
-					<div frag="窗口内容">
-						<ul class="news_list clearfix">
-							<!--[InfoCycleBegin]-->
-							<li class="news n{序号值} clearfix">
-								<span class="news_title">{标题}</span>
-								<span class="news_meta">{发布时间}</span>
-							</li>
-							<!--[InfoCycleEnd]-->
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+    	<table class="table table-striped">
+    		<thead>
+    			<tr>
+    				<th>#</th>
+    				<th>服务故障率</th>
+    				<th>趋势</th>
+    				<th>修复时间</th>
+    				<th>故障等级</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+    				<th>1</th>
+    				<td>1%</td>
+    				<td>上升</td>
+    				<td>2020-07-31</td>
+    				<td>A</td>
+    			</tr>
+    			<tr>
+    				<th>1</th>
+    				<td>1%</td>
+    				<td>上升</td>
+    				<td>2020-07-31</td>
+    				<td>A</td>
+    			</tr>
+    			<tr>
+    				<th>1</th>
+    				<td>1%</td>
+    				<td>上升</td>
+    				<td>2020-07-31</td>
+    				<td>A</td>
+    			</tr>
+    			<tr>
+    				<th>1</th>
+    				<td>1%</td>
+    				<td>上升</td>
+    				<td>2020-07-31</td>
+    				<td>A</td>
+    			</tr>
+    			<tr>
+    				<th>1</th>
+    				<td>1%</td>
+    				<td>上升</td>
+    				<td>2020-07-31</td>
+    				<td>A</td>
+    			</tr>
+    		</tbody>
+		</table>
     </div>
   </div>
 </div>
@@ -192,12 +165,13 @@
 	<div class="inner">
 		<div class="foot" frag="面板09">
 			<div frag="窗口09" portletmode="simpleSiteAttri">
-				<div frag="窗口内容">{站点版权}</div>
+				<div frag="窗口内容"></div>
 			</div>
 		</div>
 	</div>
 </div>
 <!--End||footer-->
+
 </body>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript">
