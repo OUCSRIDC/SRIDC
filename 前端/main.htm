@@ -117,7 +117,7 @@
     				<th>Operation</th>
     			</tr>
     		</thead>
-    		<tbody>
+    		<tbody id="homeData">
     			<tr>
     				<th>1</th>
     				<td>111111</td>
@@ -182,6 +182,30 @@ $(function(){
 			type:"slide"
 		}
 	});
+});
+
+$(document).ready(function(){
+  var aj = $.ajax( {    
+    url:'api/info/selectHostInfo.ashx',    
+    data:{    
+             ip : ip,    
+             username : username,    
+             operation : operation
+    },    
+    type:'post',    
+    cache:false,    
+    dataType:'json',    
+    success:function(data) {    
+        for(int i = 0; i < data.length; i++) { //循环后台传过来的Json数组
+			var datas = data[i];
+			$("#homeData").append("<tr><th>"+ i +"</th><td>"+data.ip+"</td><td>"+data.username+"</td><td><button>"+data.operation+"</button></td></tr>");
+		}
+     },    
+     error : function() {    
+          // view("异常！");    
+          alert("异常！");    
+     }    
+});  
 });
 </script>
 </html>
