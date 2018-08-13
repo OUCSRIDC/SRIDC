@@ -5,7 +5,7 @@
 <meta name="renderer" content="webkit" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>主页</title>
+<title>详情页</title>
 <script type="text/javascript" src="extends/extends.js"></script>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="mobile.css" type="text/css" />
@@ -85,73 +85,52 @@
 </div>
 <!--End||head-->
 
-<!--大图开始-->
+<!--搜索开始
 <div class="wrapper mbanner" id="mbanner">
 	<div class="inner clearfix">
 		<div class="banner" frag="面板2">
 			<div frag="窗口2">
 				<div frag="窗口内容">
-						<!--[InfoCycleBegin]-->
 						<form action="" method="post">
 			                <input type="text" name="username" class="searchbox" value="Search">
 			                <a href=""><i class="fa fa-search fa-2x"></i></a>
 			            </form>
-						<!--[InfoCycleEnd]-->
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!--//大图结束-->
+搜索结束-->
 
 <!--Start||content-->
 <div class="wrapper content" id="container">
 	<div class="inner clearfix">
-  	<div class="mod clearfix"> 
-    	<table class="table table-striped">
-    		<thead>
-    			<tr>
-    				<th>#</th>
-    				<th>IP</th>
-    				<th>Username</th>
-    				<th>Operation</th>
-    			</tr>
-    		</thead>
-    		<tbody id="homeData">
-    			<tr>
-    				<th>1</th>
-    				<td>111111</td>
-    				<td>ADMIN</td>
-    				<td><button>查询</button></td>
-    			</tr>
-    			<tr>
-    				<th>1</th>
-    				<td>111111</td>
-    				<td>ADMIN</td>
-    				<td><button>查询</button></td>
-    			</tr>
-    			<tr>
-    				<th>1</th>
-    				<td>111111</td>
-    				<td>ADMIN</td>
-    				<td><button>查询</button></td>
-    			</tr>
-    			<tr>
-    				<th>1</th>
-    				<td>111111</td>
-    				<td>ADMIN</td>
-    				<td><button>查询</button></td>
-    			</tr>
-    			<tr>
-    				<th>1</th>
-    				<td>111111</td>
-    				<td>ADMIN</td>
-    				<td><button>查询</button></td>
-    			</tr>
-    		</tbody>
-		</table>
+	  	<div class="mod clearfix"> 
+	    	<table class="table table-striped">
+	    		<thead>
+	    			<tr>
+	    				<th>#</th>
+	    				<th>Port-200</th>
+	    				<th>OS操作系统情况</th>
+	    				<th>Disk硬盘情况</th>
+	    				<th>Memory内存情况</th>
+	    				<th>CPU情况</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody id="detailData">
+	    			<tr>
+	    				<th>1</th>
+	    				<td>111111</td>
+	    				<td>ADMIN</td>
+	    				<td>ADMIN</td>
+	    				<td>ADMIN</td>
+	    				<td>ADMIN</td>
+	    			</tr>
+	    		</tbody>
+			</table>
+	    </div>
+	    <button>查看历史</button>
     </div>
-  </div>
 </div>
 <!--End||content-->
 
@@ -169,6 +148,10 @@
 
 </body>
 <script type="text/javascript" src="js/app.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/jquery.jsoncookie.js"></script>
+
 <script type="text/javascript">
 $(function(){
 	// 初始化SDAPP
@@ -185,27 +168,19 @@ $(function(){
 });
 
 $(document).ready(function(){
-  var aj = $.ajax( {    
-    url:'api/info/selectHostInfo.ashx',    
-    data:{    
-             ip : ip,    
-             username : username,    
-             operation : operation
-    },    
-    type:'post',    
-    cache:false,    
-    dataType:'json',    
-    success:function(data) {    
-        for(int i = 0; i < data.length; i++) { //循环后台传过来的Json数组
-			var datas = data[i];
-			$("#homeData").append("<tr><th>"+ i +"</th><td>"+data.ip+"</td><td>"+data.username+"</td><td><button>"+data.operation+"</button></td></tr>");
-		}
-     },    
-     error : function() {    
-          // view("异常！");    
-          alert("异常！");    
-     }    
-});  
+  (function getHostinfo(){
+   var cookie_val = $.JSONCookie("hostInfo");
+   for(var i=0; i<cookie_val.userhost.length;i++){
+      var userhost = cookie_val.userhost[i];
+      var ip = userhost.ip;
+      var username = userhost.username;
+      var operation = userhost.operation;
+	  console.log(userhost);
+      //追加页面主机信息
+      $("#detailData").append("<tr><th>"+ 1 +"</th><td>"+operation.port-200+"</td><td>"+operation.OS+"</td><td>"+operation.disk+"</td><td>"+operation.memory+"</td><td>"+operation.CPU+"</td></tr>");
+     }
+   })() 
 });
+
 </script>
 </html>
