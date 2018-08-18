@@ -17,21 +17,21 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="host_id" Type="int" Nullable="false" />
-          <Property Name="osInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="diskInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="memoryInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="cpuInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="osInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="diskInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="memoryInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cpuInfo" Type="nvarchar(max)" Nullable="false" />
           <Property Name="time" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="HostPortInfo">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="host_id" Type="int" Nullable="false" />
-          <Property Name="portInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="portInfo" Type="nvarchar(max)" Nullable="false" />
           <Property Name="time" Type="datetime" Nullable="false" />
           <Property Name="portNum" Type="int" Nullable="false" />
         </EntityType>
@@ -67,21 +67,21 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="host_id" Type="Int32" Nullable="false" />
-          <Property Name="osInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="diskInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="memoryInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="cpuInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="osInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="diskInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memoryInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cpuInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="HostPortInfo">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="host_id" Type="Int32" Nullable="false" />
-          <Property Name="portInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="portInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="portNum" Type="Int32" Nullable="false" />
         </EntityType>

@@ -31,6 +31,7 @@ public class login : IHttpHandler, IRequiresSessionState {
                 login.Status = 200;
                 login.Data = user;
                 HttpContext.Current.Session["username"] = username;
+                HttpContext.Current.Response.Redirect("../../index.html");
             }
 
             //}
@@ -40,6 +41,7 @@ public class login : IHttpHandler, IRequiresSessionState {
             //}
             string json = JsonConvert.SerializeObject(login);
             context.Response.Write(json);
+            
         }
     }
 

@@ -28,7 +28,7 @@ public class setHardwareInfo : IHttpHandler {
                 hostinfo.cpuInfo = cpuInfo;
                 hostinfo.time = Convert.ToDateTime(time);
                 db.HostInfo.Add(hostinfo);
-                db.SaveChanges();
+     
                 foreach(string info in ports)
                 {
                     if (info != "")
@@ -50,9 +50,18 @@ public class setHardwareInfo : IHttpHandler {
                         }
                         string portNum = info.Substring(0, i);
                         hostportinfo.portNum = Convert.ToInt32(portNum);
+                        hostportinfo.time =  Convert.ToDateTime(time);
                         db.HostPortInfo.Add(hostportinfo);
-                        db.SaveChanges();
+
                     }
+
+                }
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch(Exception ex)
+                {
 
                 }
 

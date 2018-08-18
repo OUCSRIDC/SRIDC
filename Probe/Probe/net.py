@@ -19,8 +19,8 @@ def postInfo():
 
 
 def main():
-    # postInfo()
-    print(function.portInfo())
+    postInfo()
+    # print(function.portInfo())
 
 
 if __name__ == '__main__':
