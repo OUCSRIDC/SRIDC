@@ -184,19 +184,17 @@ $(function(){
 });
 
 $(document).ready(function(){
-	//读取session
+  (function getHostinfo(){
+
+   //读取session
 	var hostip = sessionStorage.getItem("hostip");
 	console.log(hostip);
 
-
-  (function getHostinfo(){
-   var cookie_val = $.JSONCookie("hostInfo");
-   
    var aj = $.ajax( {    
     url:'api/info/getHostInfo.ashx',    
     data:{    
              ip : hostip,   //这个从cookie里获取，因为我也不太会cookie，所以交给学姐了，记得改下
-             username : sessionStorage.getItem("NumberId")//username怎么来。从cookie里读取，这个cookie是从登陆的地方获取的
+             username : sessionStorage.getItem("NumberId")
     },    
     type:'post',    
     cache:false,
