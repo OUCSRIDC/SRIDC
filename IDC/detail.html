@@ -167,16 +167,38 @@ $(function(){
 	});
 });
 
+//读取cookie
 $(document).ready(function(){
   (function getHostinfo(){
    var cookie_val = $.JSONCookie("hostInfo");
+   
+   var aj = $.ajax( {    
+    url:'api/info/getHostInfo.ashx',    
+    data:{    
+             ip : ip,   //这个从cookie里获取，因为我也不太会cookie，所以交给学姐了，记得改下
+             username : username//username怎么来。从cookie里读取，这个cookie是从登陆的地方获取的
+    },    
+    type:'post',    
+    cache:false,
+    async: false,  
+    dataType:'json',    
+    success:function(data) {    
+	//另外学姐，这个接口我只能给你所有当前最新的，而且包括了不同的端口信息，也就是多个端口信息和一个硬盘信息，一个CPU信息等等
+	//所以页面应该要改下，不能直接把端口信息和其他信息写在一起，要分开
+});
+   
+   
+   
+   
+   
+   //下面这些应该没用了，学姐可以去掉
    for(var i=0; i<cookie_val.userhost.length;i++){
       var userhost = cookie_val.userhost[i];
       var ip = userhost.ip;
       var username = userhost.username;
       var operation = userhost.operation;
 	  console.log(userhost);
-      //追加页面主机信息
+      //显示信息到页面
       $("#detailData").append("<tr><th>"+ 1 +"</th><td>"+operation.port-200+"</td><td>"+operation.OS+"</td><td>"+operation.disk+"</td><td>"+operation.memory+"</td><td>"+operation.CPU+"</td></tr>");
      }
    })() 
