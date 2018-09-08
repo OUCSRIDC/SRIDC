@@ -7,11 +7,14 @@ $(document).ready(function(){
              operation : operation
     },    
     type:'post',    
-    cache:false,    
+    cache:false,
+    async: false,  
     dataType:'json',    
     success:function(data) {    
-        for(int i = 0; i < data.length; i++) { //循环后台传过来的Json数组
+        //循环后台传过来的Json数组
+        for(int i = 0; i < data.length; i++) { 
 			var datas = data[i];
+            //把数据添加到页面
 			$("#table").children("tbody").append("<tr><th>"+ i +"</th><td>"+data.ip+"</td><td>"+data.username+"</td><td><button onclick="window.location.href='detail.html'">"+data.operation+"</button></td></tr>");
 		}
 
@@ -32,8 +35,7 @@ $(document).ready(function(){
             location.href='index.html';
          }
          if(data.status =='404'){
-           
-            //alert(data.error);
+            alert(data.error);
             return false;
          }
      },    

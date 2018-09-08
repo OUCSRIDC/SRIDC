@@ -167,6 +167,7 @@ $(function(){
 	});
 });
 
+//读取cookie
 $(document).ready(function(){
   (function getHostinfo(){
    var cookie_val = $.JSONCookie("hostInfo");
@@ -176,7 +177,7 @@ $(document).ready(function(){
       var username = userhost.username;
       var operation = userhost.operation;
 	  console.log(userhost);
-      //追加页面主机信息
+      //显示信息到页面
       $("#detailData").append("<tr><th>"+ 1 +"</th><td>"+operation.port-200+"</td><td>"+operation.OS+"</td><td>"+operation.disk+"</td><td>"+operation.memory+"</td><td>"+operation.CPU+"</td></tr>");
      }
    })() 
