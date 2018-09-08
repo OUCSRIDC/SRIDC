@@ -61,9 +61,12 @@
                 });
                 return;
             }
+            //给input一个id
+            var n = 1;
             if (v.readonly !== 'true') {
-                $('<td/>').html('<input type="text" name="' + v.map + '" class="' + options.textClass + '"/>')
+                $('<td/>').html('<input type="text" name="' + v.map + '" class="' + options.textClass + '" id="save' + n + '"/>')
                     .appendTo(insertRow);
+                n = n + 1;
             }
             else {
                 $("<td/>").appendTo(insertRow);

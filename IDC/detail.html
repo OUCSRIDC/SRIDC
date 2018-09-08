@@ -145,7 +145,7 @@
 	    		</tbody>
 			</table>
 	    </div>
-	    <button>查看历史</button>
+	    <button id="hist">查看历史</button>
     </div>
 </div>
 <!--End||content-->
@@ -211,6 +211,28 @@ $(document).ready(function(){
 	}
 });
    })() 
+
+
+   //历史记录
+   $("#hist").click(function () {
+          $.ajax({
+              type: "POST",
+              url: "api/info/getHostInfoHistory.ashx",
+              data: { 
+              		ip : hostip,
+             		username : sessionStorage.getItem("NumberId")
+              },
+              async: false,
+              dataType: "json",
+              success: function (dat) {
+                    if (dat.status == 200) {
+                        $("#detailData1").append("<tr><th>"+ 1 +"</th><td>"+ operation.port-200 +"</td><td>"+ operation.OS +"</td></tr>");
+            			$("#detailData2").append("<tr><th>"+ 1 +"</th><td>"+ operation.OS +"</td><td>"+ operation.disk +"</td><td>"+ operation.memory +"</td><td>"+ operation.CPU +"</td></tr>");
+                  }
+                  
+              }
+          });
+      });
 });
 
 </script>

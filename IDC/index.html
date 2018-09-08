@@ -45,7 +45,27 @@
                 action: function(mode, data) {
                     console.dir(mode);
                     if (mode === 'save') {
-                        source.push(data);
+                        //source.push(data);
+
+                            //新增数据
+                          $.ajax({
+                              type: "POST",
+                              url: "api/info/setHostInfoAll.ashx",
+                              data: { 
+                                username: sessionStorage.getItem("NumberId"), 
+                                ip: $("#save1").val(),
+                                name: $("#save2").val() 
+                            },
+                              async: false,
+                              dataType: "json",
+                              success: function (dat) {
+                                  if (dat.status == 200) {
+                                      source.push(data);
+                                  }
+                                  
+                              }
+                          });
+
                     }
                     if (mode === 'edit') {
                         for (var i = 0; i < source.length; i++) {

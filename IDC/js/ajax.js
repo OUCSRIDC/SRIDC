@@ -3,7 +3,7 @@ $(document).ready(function(){
     url:'api/info/getHostInfoAll.ashx',
     data:{    
              ip : ip,    
-             username : sessionStorage.getItem("NumberId");//username怎么来。从cookie里读取，这个cookie是从登陆的地方获取的
+             username : sessionStorage.getItem("NumberId")//username怎么来。从cookie里读取，这个cookie是从登陆的地方获取的
     },    
     type:'post',    
     cache:false,
