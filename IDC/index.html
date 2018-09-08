@@ -208,7 +208,12 @@ $(function(){
     var det = $("#table").children("tbody").children("tr").not(":first");
     console.log(det);
     det.click(function(){
-    location.href='detail.html';
+        //点击时获取改行的id即ip
+        var ip = $(this).attr('data-tabullet-id');
+        //存入session，从detail页读取session
+        sessionStorage.setItem("hostip", ip);
+        console.log(ip);
+        location.href='detail.html';
 });
 });
 

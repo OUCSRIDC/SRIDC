@@ -20,6 +20,8 @@
               success: function (dat) {
                   if (dat.status == 200) {
                       alert("login successfully");
+                      //获取用户名
+                      sessionStorage.setItem("NumberId", NumberId);
                       self.location = 'index.html';
                   }
                   else if (dat.status == 1001) {
