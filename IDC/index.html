@@ -108,7 +108,11 @@
                     <!--[NaviStructBegin]-->
                     <ul class="wp-menu clearfix" data-nav-aside='{"title":"导航","index":0}'>
                         <!--[NaviItemCycleBegin]-->
-                        <li class="menu-item {级别样式}"> <a class="menu-link" href="{栏目URL}" target="{打开方式}"><img class="userhead" src="images/head.jpg" height="30" width="30" alt=""></a>
+                        <li class="menu-item {级别样式}"> 
+                            <a class="menu-link" href="{栏目URL}" target="{打开方式}">
+                                <p id="userName">用户名</p>
+                                <img class="userhead" src="images/head.jpg" height="30" width="30" alt="">
+                            </a>
                             <!--[MenuStructBegin]-->
                             <em class="menu-switch-arrow"></em>
                             <ul class="sub-menu clearfix">
@@ -192,7 +196,7 @@
                     <tr data-tabullet-map="id">
                         <th width="50" data-tabullet-map="_index" data-tabullet-readonly="true">No</th>
                         <th data-tabullet-map="ip">IP</th>
-                        <th data-tabullet-map="username">Username</th>
+                        <th data-tabullet-map="username">Name</th>
                         <th width="50" data-tabullet-type="edit"></th>
                         <th width="50" data-tabullet-type="delete"></th>
                     </tr>
@@ -209,10 +213,11 @@
 <script src="js/jquery.cookie.js"></script>
 <script src="js/json2.js"></script>
 <script src="js/jquery.jsoncookie.js"></script>
-<script src="js/ajax.js"></script>
+
 
 <script type="text/javascript">
 $(function(){
+
 	// 初始化SDAPP
 	new SDAPP({
 		'focus':{
@@ -224,9 +229,10 @@ $(function(){
 			type:"slide"
 		}
 	});
+
     // 点击跳转到detail页面
     var det = $("#table").children("tbody").children("tr").not(":first");
-    console.log(det);
+    //console.log(det);
     det.click(function(){
         //点击时获取改行的id即ip
         var ip = $(this).attr('data-tabullet-id');
@@ -234,9 +240,34 @@ $(function(){
         sessionStorage.setItem("hostip", ip);
         console.log(ip);
         location.href='detail.html';
-});
-});
+    });
 
+    //连接数据
+    $.ajax( {    
+    url:'api/info/getHostInfoAll.ashx',
+    data:{    
+             ip : ip,    
+             username : sessionStorage.getItem("NumberId") //username怎么来。从cookie里读取，这个cookie是从登陆的地方获取的
+    },    
+    type:'post',    
+    cache:false,
+    async: false,  
+    dataType:'json',    
+    success:function(data) {    
+        console.log(data);
+         if(data.status =='200'){
+            //循环后台传过来的Json数组
+            for(var i = 0; i < data.length; i++) { 
+                var datas = data[i];
+                //把数据添加到页面
+                $("#table").children("tbody").append("<tr><th>"+ i +"</th><td id='"+ data.ip +"'>"+data.ip+"</td><td>"+data.username+"</td><td><button>"+data.operation+"</button></td></tr>");
+            }
+            //导航栏添加用户名
+            $("#userName").value(data.username);
+         }
+     },    
+  });  
+});
 
 </script>
 

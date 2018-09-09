@@ -61,12 +61,12 @@
                 });
                 return;
             }
+            
             //给input一个id
-            var n = 1;
             if (v.readonly !== 'true') {
-                $('<td/>').html('<input type="text" name="' + v.map + '" class="' + options.textClass + '" id="save' + n + '"/>')
+                $('<td/>').html('<input type="text" name="' + v.map + '" class="' + options.textClass + '" id="save' + 2 + '"/>')
                     .appendTo(insertRow);
-                n = n + 1;
+                $("tbody tr:first td:eq(1) input").attr('id','save1');
             }
             else {
                 $("<td/>").appendTo(insertRow);
