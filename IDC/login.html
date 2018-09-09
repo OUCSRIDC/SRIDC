@@ -9,30 +9,7 @@
   <script type='text/javascript' src='js/jquery.particleground.min.js'></script>
   <script type='text/javascript' src='js/demo.js'></script>
   <!--<script type="text/javascript" src="js/login.js"></script>-->
-    <script type="text/javascript">
-        $("#login").click(function () {
-          $.ajax({
-              type: "POST",
-              url: "api/user/login.ashx",
-              data: { NumberId: $("#numberId").val(), Password: $("#password").val() },
-              async: false,
-              dataType: "json",
-              success: function (dat) {
-                  if (dat.status == 200) {
-                      alert("login successfully");
-                      //获取用户名
-                      sessionStorage.setItem("NumberId", NumberId);
-                      self.location = 'index.html';
-                  }
-                  else if (dat.status == 1001) {
-                      alert("login failed, validate is error");
-                  }
-                  else if (dat.status == 1000) {
-                      alert("login failed, numberid or password is error");
-                  }
-              }
-          });
-      });</script>
+    
 </head> 
 
 <body>
@@ -40,7 +17,7 @@
   <div class="intro">
         <div class="page-container">
             <h1>Login</h1>
-            <form action="api/user/login.ashx" method="post">
+            <form>
                 <input id="username" type="text" name="username" class="username" placeholder="Username">
                 <input id="password" type="password" name="password" class="password" placeholder="Password">
                 <!--<div id="login" type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign in</span></div>-->
@@ -50,5 +27,33 @@
         </div>
     </div>
 </div>
+    <script type="text/javascript">
+        $("#login").click(function () {
+          $.ajax({
+              type: "POST",
+              url: "api/user/login.ashx",
+              data: { username: $("#username").val(), Password: $("#password").val() },
+              async: false,
+              dataType: "json",
+              success: function (dat) {
+                  if (dat.Status == 200) {
+                  
+                      //获取用户名
+                      //sessionStorage.setItem("NumberId", NumberId);
+                      
+                      alert("login successfully");
+                      self.location = 'index.html';
+                      
+                  }
+                  else if (dat.Status == 1001) {
+                      alert("login failed, validate is error");
+                  }
+                  else if (dat.Status == 1000) {
+                      alert("login failed, numberid or password is error");
+                  }
+              }
+          });
+      });</script>
 </body> 
+
 </html> 
