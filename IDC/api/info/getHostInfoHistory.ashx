@@ -1,4 +1,4 @@
-﻿<%@ WebHandler Language="C#" Class="getHostInfo" %>
+﻿<%@ WebHandler Language="C#" Class="getHostInfoHistory" %>
 
 using System;
 using System.Web;
@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Web.SessionState;
 using System.Linq;
 using Newtonsoft.Json;
-public class getHostInfo : IHttpHandler, IRequiresSessionState {
+
+public class getHostInfoHistory : IHttpHandler {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         string username = context.Request["username"];
         string ip = context.Request["ip"];
-        GetHostInfo ghi = new GetHostInfo();
+        GetHostInfoHistory ghi = new GetHostInfoHistory();
         if (HttpContext.Current.Session["username"].ToString() == username)
         {
             using (var db = new IDCEntities())
@@ -20,13 +21,14 @@ public class getHostInfo : IHttpHandler, IRequiresSessionState {
                 try
                 {
                     int hostid = Convert.ToInt32(ip);
-                    List<HostPortInfo> port = (from it in db.HostPortInfo where it.host_id == hostid orderby it.time descending select it).ToList();
+                    List<HostPortInfo> port = (from it in db.HostPortInfo where it.host_id == hostid select it).ToList();
                     List<Ports> data = new List<Ports>();
-                    DateTime t_now = port[0].time;//获取表中最新时间
-                    var hostinfo = db.HostInfo.FirstOrDefault(a => a.host_id == hostid);
+                    List<OtherInfo> otherInfo = new List<OtherInfo>();
+                    List<HostInfo> hostinfo = (from it in db.HostInfo where it.host_id == hostid select it).ToList();
+                    //var hostinfo = db.HostInfo.FirstOrDefault(a => a.host_id == hostid);
                     foreach(var t in port)
                     {
-                        if (t.portInfo == "占用" && t.time == t_now)
+                        if (t.portInfo == "占用")
                         {
                             Ports hp = new Ports();
                             hp.Uid = t.id;
@@ -36,11 +38,17 @@ public class getHostInfo : IHttpHandler, IRequiresSessionState {
                             data.Add(hp);
                         }
                     }
+                    foreach(var t in hostinfo)
+                    {
+                        OtherInfo oi = new OtherInfo();
+                        oi.Disk = t.diskInfo;
+                        oi.Memory = t.memoryInfo;
+                        oi.OS1 = t.osInfo;
+                        oi.CPU1 = t.cpuInfo;
+                        otherInfo.Add(oi);
+                    }
                     ghi.Data = data;
-                    ghi.Disk = hostinfo.diskInfo;
-                    ghi.Memory = hostinfo.memoryInfo;
-                    ghi.OS1 = hostinfo.osInfo;
-                    ghi.CPU1 = hostinfo.cpuInfo;
+                    ghi.Data2 = otherInfo;
                     ghi.Status = 200;
                 }
                 catch
