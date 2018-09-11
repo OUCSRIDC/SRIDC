@@ -19,23 +19,23 @@
     $(function() {
         var source = [{
             id: 1,
-            username: "Aditya Purwa",
+            name: "Aditya Purwa",
             ip: "Admin"
         }, {
             id: 2,
-            username: "Aditya Avaga",
+            name: "Aditya Avaga",
             ip: "Manager"
         }, {
-            id: 101,
-            username: "Aditya Myria",
+            id: 3,
+            name: "Aditya Myria",
             ip: "User"
         }, {
-            id: 102,
-            username: "Lucent Serentia",
+            id: 4,
+            name: "Lucent Serentia",
             ip: "LOD"
         }, {
-            id: 103,
-            username: "Hayden Bapalthiel",
+            id: 5,
+            name: "Hayden Bapalthiel",
             ip: "King"
         }, ];
 
@@ -45,7 +45,7 @@
                 action: function(mode, data) {
                     console.dir(mode);
                     if (mode === 'save') {
-                        //source.push(data);
+                        source.push(data);
 
                             //新增数据
                           $.ajax({
@@ -86,6 +86,33 @@
                 }
             });
         }
+
+
+            //连接数据
+            $.ajax({
+                url: 'api/info/getHostInfoAll.ashx',
+                data: {
+                    username: sessionStorage.getItem("NumberId")
+                },
+                type: 'post',
+                cache: false,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status == '200') {
+                        source.push(data);
+                        //循环后台传过来的Json数组
+                        for (var i = 0; i < data.length; i++) {
+                            var datas = data[i];
+                            //把数据添加到页面
+                            $("#table").children("tbody").append("<tr><th>" + datas.id + "</th><td id='" + datas.ip + "'>" + datas.ip + "</td><td>" + data.name + "</td><td><button></button></td></tr>");
+                        }
+                        //导航栏添加用户名
+                        $("#userName").value(data.username);
+                    }
+                },
+            });
 
         resetTabullet();
     });
@@ -195,7 +222,7 @@
                         <tr data-tabullet-map="id">
                             <th width="50" data-tabullet-map="_index" data-tabullet-readonly="true">No</th>
                             <th data-tabullet-map="ip">IP</th>
-                            <th data-tabullet-map="username">Name</th>
+                            <th data-tabullet-map="name">Name</th>
                             <th width="50" data-tabullet-type="edit"></th>
                             <th width="50" data-tabullet-type="delete"></th>
                         </tr>
@@ -241,30 +268,6 @@
                 location.href = 'detail.html';
             });
 
-            //连接数据
-            $.ajax({
-                url: 'api/info/getHostInfoAll.ashx',
-                data: {
-                    username: sessionStorage.getItem("NumberId")
-                },
-                type: 'post',
-                cache: false,
-                async: false,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == '200') {
-                        //循环后台传过来的Json数组
-                        for (var i = 0; i < data.length; i++) {
-                            var datas = data[i];
-                            //把数据添加到页面
-                            $("#table").children("tbody").append("<tr><th>" + i + "</th><td id='" + data.ip + "'>" + data.ip + "</td><td>" + data.username + "</td><td><button>" + data.operation + "</button></td></tr>");
-                        }
-                        //导航栏添加用户名
-                        $("#userName").value(data.username);
-                    }
-                },
-            });
         });
 
     </script>
