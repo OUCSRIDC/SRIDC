@@ -17,7 +17,7 @@
 
     <script>
     $(function() {
-        // var source = [{
+        // var data = [{
         //     id: 1,
         //     ip: "Aditya Purwa",
         //     name: "Admin"
@@ -40,6 +40,9 @@
         // }, ];
 
         var source;
+        // source = data;
+        //             console.log(data); 
+        //             console.log(source);
 
         //连接数据
         $.ajax({
@@ -47,14 +50,16 @@
             data: {
                 username: sessionStorage.getItem("NumberId")
             },
-            type: 'post',
+            type: 'get',
             cache: false,
             async: false,
+            sync:false,
             dataType: 'json',
             success: function (data) {
-                //console.log(data);
                 if (data.Status == 200) {
-                    source = data.data;
+                    source = data.Data;
+                    console.log(data.Data); 
+
                     console.log(source);
                     //循环后台传过来的Json数组
                     //for (var i = 0; i < data.length; i++) {
