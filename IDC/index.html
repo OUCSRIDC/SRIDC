@@ -54,7 +54,8 @@
             success: function (data) {
                 //console.log(data);
                 if (data.Status == 200) {
-                    source = data.data; 
+                    source = data.data;
+                    console.log(source);
                     //循环后台传过来的Json数组
                     //for (var i = 0; i < data.length; i++) {
                     //    var datas = data[i];
@@ -67,7 +68,7 @@
             },
         });
 
-        console.log(source);
+        
 
         function resetTabullet() {
             $("#table").tabullet({
