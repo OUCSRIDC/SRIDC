@@ -163,7 +163,7 @@ body .navbar {width:100%;
 
 /**主体开始**/
 #container {/* padding:7px 0; */}
-#container .mod {background:#fff;width:978px;padding:10px;border:1px solid #e5e5e5;border-radius: 6px;}
+#container .mod {background:#fff;/*width:978px;*/padding:10px;border:1px solid #e5e5e5;border-radius: 6px;}
 .inner button{width:100px;float: right;display: inline-block;}
 
 /**首页三列布局**/
