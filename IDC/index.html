@@ -17,27 +17,27 @@
 
     <script>
     $(function() {
-        // var data = [{
-        //     id: 1,
-        //     ip: "Aditya Purwa",
-        //     name: "Admin"
-        // }, {
-        //     id: 2,
-        //     ip: "Aditya Avaga",
-        //     name: "Manager"
-        // }, {
-        //     id: 3,
-        //     ip: "Aditya Myria",
-        //     name: "User"
-        // }, {
-        //     id: 4,
-        //     ip: "Lucent Serentia",
-        //     name: "LOD"
-        // }, {
-        //     id: 5,
-        //     ip: "Hayden Bapalthiel",
-        //     name: "King"
-        // }, ];
+        var source = [{
+            id: 1,
+            ip: "Aditya Purwa",
+            name: "Admin"
+        }, {
+            id: 2,
+            ip: "Aditya Avaga",
+            name: "Manager"
+        }, {
+            id: 3,
+            ip: "Aditya Myria",
+            name: "User"
+        }, {
+            id: 4,
+            ip: "Lucent Serentia",
+            name: "LOD"
+        }, {
+            id: 5,
+            ip: "Hayden Bapalthiel",
+            name: "King"
+        }, ];
 
         var source;
         // source = data;
@@ -45,6 +45,7 @@
         //             console.log(source);
 
         //连接数据
+        
         $.ajax({
             url: 'api/info/getHostInfoAll.ashx',
             data: {
@@ -94,7 +95,7 @@
                               async: false,
                               dataType: "json",
                               success: function (dat) {
-                                  if (dat.status == 200) {
+                                  if (dat.Status == 200) {
                                       source.push(data);
                                   }
                                   
@@ -108,6 +109,26 @@
                                 source[i] = data;
                             }
                         }
+
+                        //编辑数据
+                        $.ajax({
+                              type: "POST",
+                              url: "api/info/change.ashx",
+                              data: { 
+                                username: sessionStorage.getItem("NumberId"), 
+                                ip: $("#save1").val(),
+                                name: $("#save2").val() 
+                            },
+                              async: false,
+                              dataType: "json",
+                              success: function (dat) {
+                                  if (dat.Status == 200) {
+                                      
+                                  }
+                                  
+                              }
+                        });
+
                     }
                     if (mode == 'delete') {
                         for (var i = 0; i < source.length; i++) {
@@ -116,6 +137,26 @@
                                 break;
                             }
                         }
+
+                        //删除数据
+                        $.ajax({
+                              type: "POST",
+                              url: "api/info/delete.ashx",
+                              data: { 
+                                username: sessionStorage.getItem("NumberId"), 
+                                ip: $("#save1").val(),
+                                name: $("#save2").val() 
+                            },
+                              async: false,
+                              dataType: "json",
+                              success: function (dat) {
+                                  if (dat.Status == 200) {
+                                      source.push(data);
+                                  }
+                                  
+                              }
+                        });
+
                     }
                     resetTabullet();
                 }
@@ -269,16 +310,17 @@
 
             // 点击跳转到detail页面
             var det = $("#table").children("tbody").children("tr").not(":first");
-            //console.log(det);
-            det.click(function () {
-                //点击时获取改行的id即ip
-                var ip = $(this).attr('data-tabullet-id');
-                //存入session，从detail页读取session
-                sessionStorage.setItem("hostip", ip);
-                console.log(ip);
-                location.href = 'detail.html';
+            console.log(det);
+            det.each(function() {
+                $(this).children("td").slice(0,3).click(function () {
+                    //点击时获取改行的id即ip
+                    var ip = $(this).attr('data-tabullet-id');
+                    //存入session，从detail页读取session
+                    sessionStorage.setItem("hostip", ip);
+                    console.log(ip);
+                    location.href = 'detail.html';
+                });
             });
-
         });
 
     </script>
