@@ -7,7 +7,7 @@ using System.Web.SessionState;
 using System.Linq;
 using Newtonsoft.Json;
 
-public class delete : IHttpHandler {
+public class delete : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
@@ -20,6 +20,9 @@ public class delete : IHttpHandler {
             {
                 Host person = (from it in db.Host where it.ip == ip select it).FirstOrDefault();
                 db.Host.Remove(person);
+                int Status = 200;
+                string json = JsonConvert.SerializeObject(Status);
+                context.Response.Write(json);
             }
         }
     }

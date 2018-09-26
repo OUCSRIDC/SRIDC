@@ -7,7 +7,7 @@ using System.Web.SessionState;
 using System.Linq;
 using Newtonsoft.Json;
 
-public class change : IHttpHandler {
+public class change : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
@@ -22,8 +22,8 @@ public class change : IHttpHandler {
                 Host hi = db.Host.SingleOrDefault(a => a.ip == ip);
                 hi.name = name;
                 db.SaveChanges();
-                int status = 200;
-                string json = JsonConvert.SerializeObject(status);
+                int Status = 200;
+                string json = JsonConvert.SerializeObject(Status);
                 context.Response.Write(json);
             }
         }

@@ -99,7 +99,7 @@
                               dataType: "json",
                               success: function (dat) {
                                   if (dat.Status == 200) {
-                                      
+                                      alert('删除成功！');
                                   }
                                   
                               }
@@ -170,7 +170,7 @@
                                       dataType: "json",
                                       success: function (dat) {
                                           if (dat.Status == 200) {
-                                              
+                                              alert('修改成功！');
                                           }
                                           
                                       }
