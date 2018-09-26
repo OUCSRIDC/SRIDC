@@ -75,19 +75,43 @@
         $(data).each(function (i, v) {
             var tr = $("<tr/>").appendTo($(tbody)).attr('data-tabullet-id', v[idMap]);
             $(metadata).each(function (mi, mv) {
+                //删除操作
                 if (mv.type === 'delete') {
                     var td = $("<td/>")
                         .html('<button class="' + options.deleteClass + '">' + options.deleteContent + '</button>')
                         .attr('data-tabullet-type', mv.type)
                         .appendTo(tr);
                     td.find('button').click(function (event) {
+                        //获取IP
+                        var getip = $(this).parent('td').parent('tr').find('td').eq(1).html();
+                        //console.log(getip);
                         tr.remove();
                         options.action('delete', $(tr).attr('data-tabullet-id'));
+                        //删除数据
+                        $.ajax({
+                              type: "POST",
+                              url: "api/info/delete.ashx",
+                              data: { 
+                                username: sessionStorage.getItem("NumberId"), 
+                                ip: getip
+                            },
+                              async: false,
+                              dataType: "json",
+                              success: function (dat) {
+                                  if (dat.Status == 200) {
+                                      
+                                  }
+                                  
+                              }
+                        });
+
                     });
                 }
+
+                //编辑操作
                 else if (mv.type === 'edit') {
                     var td = $("<td/>")
-                        .html('<button class="' + options.editClass + '">' + options.editContent + '</button>')
+                        .html('<button data-mode="nomal" class="' + options.editClass + '">' + options.editContent + '</button>')
                         .attr('data-tabullet-type', mv.type)
                         .appendTo(tr);
                     td.find('button').click(function (event) {
@@ -96,24 +120,62 @@
                             var rowParent = td.closest('tr');
                             var rowChildren = rowParent.find('input');
                             $(rowChildren).each(function (ri, rv) {
-                                editData[$(rv).attr('name')] = $(rv).val();
+                                editData[$(rv).attr('name')] = $(rv).val(); //获取当前的name属性
                             });
                             editData[idMap] = $(rowParent).attr('data-tabullet-id');
                             options.action('edit', editData);
+
+
                             return;
                         }
+
+                        //edit点击后变成save
                         $(this).removeClass(options.editClass).addClass(options.saveClass).html(options.saveContent)
                             .attr('data-mode', 'edit');
+                        //$(this).attr('id', 'editing');
                         var rowParent = td.closest('tr');
+                        //$(rowParent).attr('id', 'eding');
                         var rowChildren = rowParent.find('td');
                         $(rowChildren).each(function (ri, rv) {
                             if ($(rv).attr('data-tabullet-type') === 'edit' ||
                                 $(rv).attr('data-tabullet-type') === 'delete') {
                                 return;
                             }
-                            var mapName = $(rv).attr('data-tabullet-map');
+
+                            //锁定两条数据
+                            var mapName = $(rv).attr('data-tabullet-map');  
                             if ($(rv).attr('data-tabullet-readonly') !== 'true') {
+                                //显示编辑过的数据
                                 $(rv).html('<input type="text" name="' + mapName + '" value="' + v[mapName] + '" class="' + options.textClass + '"/>');
+                                var namename;
+                                var nameip;
+                                if($(rv).attr('data-tabullet-map') == 'name') {
+                                    namename = $(rv).find('input').attr('value');
+                                    console.log(namename);
+                                }
+                                if($(rv).attr('data-tabullet-map') == 'ip') {
+                                    nameip = $(rv).find('input').attr('value');
+                                    console.log(nameip);
+                                }
+                                //编辑数据
+                                $.ajax({
+                                      type: "POST",
+                                      url: "api/info/change.ashx",
+                                      data: { 
+                                        username: sessionStorage.getItem("NumberId"), 
+                                        ip: nameip,
+                                        name: namename
+                                    },
+                                      async: false,
+                                      dataType: "json",
+                                      success: function (dat) {
+                                          if (dat.Status == 200) {
+                                              
+                                          }
+                                          
+                                      }
+                                });
+
                             }
                         });
                     });
@@ -126,6 +188,27 @@
                         .appendTo(tr);
                 }
             });
-        });
+
+        });            
+        //点击跳转
+            var det = $("#table").children("tbody").children("tr").not(":first");
+             det.each(function() {
+                $(this).children("td").slice(0,3).click(function () {
+                    var mm = $(this).parent("tr");
+                    var mmd = $(mm).children("td").eq(3).find('button');
+                    //点击时获取改行的id即ip
+                    var ip = $(this).attr('data-tabullet-id');
+                    //存入session，从detail页读取session
+                    sessionStorage.setItem("hostip", ip);
+                    console.log(this);
+                    if($(mmd).attr('data-mode') == 'nomal'){
+                        location.href = 'detail.html';
+                    }
+                    if($(mmd).attr('data-mode') == 'edit'){
+                        console.log("eding");
+                    }
+                    //else{}
+                });
+            });
     };
 }(jQuery));
