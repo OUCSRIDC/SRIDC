@@ -9,7 +9,7 @@ using System.Web;
 public class Ports
 {
     private int uid;
-    private int port;
+    private string port;
     private DateTime date;
     private string status;
 
@@ -26,7 +26,7 @@ public class Ports
         }
     }
 
-    public int Port
+    public string Port
     {
         get
         {

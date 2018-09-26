@@ -123,14 +123,13 @@
                               url: "api/info/delete.ashx",
                               data: { 
                                 username: sessionStorage.getItem("NumberId"), 
-                                ip: $("#save1").val(),
-                                name: $("#save2").val() 
+                                ip: $("#save1").val()
                             },
                               async: false,
                               dataType: "json",
                               success: function (dat) {
                                   if (dat.Status == 200) {
-                                      
+                                      alert('删除成功！');
                                   }
                                   
                               }

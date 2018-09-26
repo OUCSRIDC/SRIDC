@@ -49,7 +49,7 @@ public class setHardwareInfo : IHttpHandler {
                             }
                         }
                         string portNum = info.Substring(0, i);
-                        hostportinfo.portNum = Convert.ToInt32(portNum);
+                        hostportinfo.portNum = portNum;
                         hostportinfo.time =  Convert.ToDateTime(time);
                         db.HostPortInfo.Add(hostportinfo);
 

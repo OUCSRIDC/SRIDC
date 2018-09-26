@@ -43,7 +43,7 @@ public class selectHostInfo : IHttpHandler, IRequiresSessionState {
                     }
                     else
                     {
-                        List<HostPortInfo> port = (from it in db.HostPortInfo where it.host_id == ip && it.portNum == Convert.ToInt32(s[1]) orderby it.time select it).ToList();
+                        List<HostPortInfo> port = (from it in db.HostPortInfo where it.host_id == ip && it.portNum == s[1] orderby it.time select it).ToList();
                         shi.Data = port[0].portInfo;
                     }
                     shi.Status = 200;

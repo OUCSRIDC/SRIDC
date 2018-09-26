@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3129886aac0b43afa9fb5349be9e6872" Name="Diagram1">
+      <Diagram DiagramId="fc904d34f0024c0981b90b66d6c3b1f5" Name="Diagram1">
         <EntityTypeShape EntityType="IDCModel.Host" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IDCModel.HostInfo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IDCModel.HostPortInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
