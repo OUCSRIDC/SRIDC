@@ -117,24 +117,6 @@
 
                         console.log(source);
 
-                        //删除数据
-                        $.ajax({
-                              type: "POST",
-                              url: "api/info/delete.ashx",
-                              data: { 
-                                username: sessionStorage.getItem("NumberId"), 
-                                ip: $("#save1").val()
-                            },
-                              async: false,
-                              dataType: "json",
-                              success: function (dat) {
-                                  if (dat.Status == 200) {
-                                      alert('删除成功！');
-                                  }
-                                  
-                              }
-                        });
-
                     }
                     resetTabullet();
                 }

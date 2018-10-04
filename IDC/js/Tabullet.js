@@ -84,7 +84,7 @@
                     td.find('button').click(function (event) {
                         //获取IP
                         var getip = $(this).parent('td').parent('tr').find('td').eq(1).html();
-                        //console.log(getip);
+                        console.log(getip);
                         tr.remove();
                         options.action('delete', $(tr).attr('data-tabullet-id'));
                         //删除数据
@@ -132,11 +132,15 @@
                         //edit点击后变成save
                         $(this).removeClass(options.editClass).addClass(options.saveClass).html(options.saveContent)
                             .attr('data-mode', 'edit');
-                        //$(this).attr('id', 'editing');
+                        $(this).attr('id', 'editing');
                         var rowParent = td.closest('tr');
                         //$(rowParent).attr('id', 'eding');
                         var rowChildren = rowParent.find('td');
+
+                        
+
                         $(rowChildren).each(function (ri, rv) {
+                            //console.log(rv)
                             if ($(rv).attr('data-tabullet-type') === 'edit' ||
                                 $(rv).attr('data-tabullet-type') === 'delete') {
                                 return;
@@ -147,36 +151,41 @@
                             if ($(rv).attr('data-tabullet-readonly') !== 'true') {
                                 //显示编辑过的数据
                                 $(rv).html('<input type="text" name="' + mapName + '" value="' + v[mapName] + '" class="' + options.textClass + '"/>');
-                                var namename;
-                                var nameip;
-                                if($(rv).attr('data-tabullet-map') == 'name') {
-                                    namename = $(rv).find('input').attr('value');
-                                    console.log(namename);
-                                }
-                                if($(rv).attr('data-tabullet-map') == 'ip') {
-                                    nameip = $(rv).find('input').attr('value');
-                                    console.log(nameip);
-                                }
-                                //编辑数据
-                                $.ajax({
-                                      type: "POST",
-                                      url: "api/info/change.ashx",
-                                      data: { 
-                                        username: sessionStorage.getItem("NumberId"), 
-                                        ip: nameip,
-                                        name: namename
-                                    },
-                                      async: false,
-                                      dataType: "json",
-                                      success: function (dat) {
-                                          if (dat.Status == 200) {
-                                              alert('修改成功！');
-                                          }
-                                          
-                                      }
-                                });
-
+                                
+                                
                             }
+                        });
+
+                        //编辑数据
+                        $("#editing").click(function(){
+                            var namename;
+                            var nameip;
+
+                            var rv1 = $(this).parent('td').siblings().eq(1);
+                            var rv2 = $(this).parent('td').siblings().eq(2);
+                            //console.log(rv1,rv2);
+                            namename = $(rv1).find('input').attr('value');
+                            console.log(namename);
+                            nameip = $(rv2).find('input').attr('value');
+                            console.log(nameip);
+
+                            $.ajax({
+                                  type: "POST",
+                                  url: "api/info/change.ashx",
+                                  data: { 
+                                    username: sessionStorage.getItem("NumberId"), 
+                                    ip: nameip,
+                                    name: namename
+                                },
+                                  async: false,
+                                  dataType: "json",
+                                  success: function (dat) {
+                                      if (dat.Status == 200) {
+                                          alert('修改成功！');
+                                      }
+                                      
+                                  }
+                            });
                         });
                     });
                 }
