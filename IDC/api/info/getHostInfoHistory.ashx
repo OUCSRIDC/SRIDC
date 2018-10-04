@@ -20,7 +20,8 @@ public class getHostInfoHistory : IHttpHandler {
             {
                 try
                 {
-                    int hostid = Convert.ToInt32(ip);
+                    Host hi = db.Host.SingleOrDefault(a => a.ip == ip);
+                    int hostid = Convert.ToInt32(hi.id);
                     List<HostPortInfo> port = (from it in db.HostPortInfo where it.host_id == hostid select it).ToList();
                     List<Ports> data = new List<Ports>();
                     List<OtherInfo> otherInfo = new List<OtherInfo>();

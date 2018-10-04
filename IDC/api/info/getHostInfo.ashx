@@ -19,14 +19,15 @@ public class getHostInfo : IHttpHandler, IRequiresSessionState {
             {
                 try
                 {
-                    int hostid = Convert.ToInt32(ip);
+                    Host hi = db.Host.SingleOrDefault(a => a.ip == ip);
+                    int hostid = Convert.ToInt32(hi.id);
                     List<HostPortInfo> port = (from it in db.HostPortInfo where it.host_id == hostid orderby it.time descending select it).ToList();
                     List<Ports> data = new List<Ports>();
                     DateTime t_now = port[0].time;//获取表中最新时间
                     var hostinfo = db.HostInfo.FirstOrDefault(a => a.host_id == hostid);
                     foreach(var t in port)
                     {
-                        if (t.portInfo == "占用" && t.time == t_now)
+                        if (t.time == t_now)
                         {
                             Ports hp = new Ports();
                             hp.Uid = t.id;
