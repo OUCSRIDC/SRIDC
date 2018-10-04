@@ -37,7 +37,8 @@
         var table = this;
         $(table).find("tbody").remove();
         var tbody = $("<tbody/>").appendTo($(this));
-        // INSERT
+
+        // INSERT新增数据
         var insertRow = $("<tr/>").appendTo($(tbody)).attr('data-tabullet-id', "-1");
         $(metadata).each(function (i, v) {
             if (v.type === 'delete') {
@@ -50,13 +51,33 @@
                     .attr('data-tabullet-type', 'save')
                     .appendTo(insertRow);
                 td.find('button').click(function (event) {
-                    var saveData = [];
-                    var rowParent = td.closest('tr');
-                    var rowChildren = rowParent.find('input');
-                    $(rowChildren).each(function (ri, rv) {
-                        saveData[$(rv).attr('name')] = $(rv).val();
-                    });
-                    options.action('save', saveData);
+
+                    // var saveData = [];
+                    // var rowParent = td.closest('tr');
+                    // var rowChildren = rowParent.find('input');
+                    // $(rowChildren).each(function (ri, rv) {
+                    //     saveData[$(rv).attr('name')] = $(rv).val();
+                    // });
+                    // options.action('save', saveData);
+
+                    //新增数据
+                          $.ajax({
+                              type: "POST",
+                              url: "api/info/setHostInfo.ashx",
+                              data: { 
+                                username: sessionStorage.getItem("NumberId"), 
+                                ip: $("#save1").val(),
+                                name: $("#save2").val() 
+                            },
+                              async: false,
+                              dataType: "json",
+                              success: function (dat) {
+                                  if (dat.Status == 200) {
+                                      source.push(data);
+                                  }
+                                  
+                              }
+                          });
                     return;
                 });
                 return;
@@ -164,9 +185,9 @@
                             var rv1 = $(this).parent('td').siblings().eq(1);
                             var rv2 = $(this).parent('td').siblings().eq(2);
                             //console.log(rv1,rv2);
-                            namename = $(rv1).find('input').attr('value');
+                            namename = $(rv1).find('input').val();
                             console.log(namename);
-                            nameip = $(rv2).find('input').attr('value');
+                            nameip = $(rv2).find('input').val();
                             console.log(nameip);
 
                             $.ajax({
@@ -205,11 +226,13 @@
                 $(this).children("td").slice(0,3).click(function () {
                     var mm = $(this).parent("tr");
                     var mmd = $(mm).children("td").eq(3).find('button');
-                    //点击时获取改行的id即ip
-                    var ip = $(this).attr('data-tabullet-id');
+                    //点击时获取改行的ip
+                    var ip = $(mm).children("td").eq(1).html();
                     //存入session，从detail页读取session
+                    console.log(ip);
                     sessionStorage.setItem("hostip", ip);
-                    console.log(this);
+                    //alert(sessionStorage.hostip);
+                    //console.log(this);
                     if($(mmd).attr('data-mode') == 'nomal'){
                         location.href = 'detail.html';
                     }
