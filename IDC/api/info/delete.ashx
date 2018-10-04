@@ -20,6 +20,7 @@ public class delete : IHttpHandler, IRequiresSessionState {
             {
                 Host person = (from it in db.Host where it.ip == ip select it).FirstOrDefault();
                 db.Host.Remove(person);
+                db.SaveChanges();
                 int Status = 200;
                 string json = JsonConvert.SerializeObject(Status);
                 context.Response.Write(json);
