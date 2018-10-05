@@ -60,6 +60,9 @@
                     // });
                     // options.action('save', saveData);
 
+                    //刷新页面
+                    window.location.reload();
+
                     //新增数据
                           $.ajax({
                               type: "POST",
@@ -185,9 +188,9 @@
                             var rv1 = $(this).parent('td').siblings().eq(1);
                             var rv2 = $(this).parent('td').siblings().eq(2);
                             //console.log(rv1,rv2);
-                            namename = $(rv1).find('input').val();
+                            namename = $(rv2).find('input').val();
                             console.log(namename);
-                            nameip = $(rv2).find('input').val();
+                            nameip = $(rv1).find('input').val();
                             console.log(nameip);
 
                             $.ajax({
