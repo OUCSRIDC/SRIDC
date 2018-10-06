@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
 <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
@@ -203,9 +203,16 @@ $(document).ready(function(){
     async: false,  
     dataType:'json',    
     success:function(data) {    
-		if(data.Status =='200'){
-            $("#detailData1").append("<tr><th>"+ 1 +"</th><td>"+ data.Data.Port +"</td><td>"+ data.Data.Date +"</td><td>"+ data.Data.Status +"</td></tr>");
-            $("#detailData2").append("<tr><th>"+ 1 +"</th><td>"+ data.Data.OS1 +"</td><td>"+ data.Data.Disk +"</td><td>"+ data.Data.Memory +"</td><td>"+ operation.CPU1 +"</td></tr>");
+        if (data.Status == '200') {
+            for (var i = 0; i < data.Data.length;i++){
+                $("#detailData1").append("<tr><th>" + i + "</th><td>" + data.Data[i].Port + "</td><td>" + data.Data[i].Date + "</td><td>" + data.Data[i].Status + "</td></tr>");
+            }
+
+
+
+
+            
+            $("#detailData2").append("<tr><th>" + 1 + "</th><td>" + data.OS1 + "</td><td>" + data.Disk + "</td><td>" + data.Memory + "</td><td>" + data.CPU1 + "</td></tr>");
          }
 		
 	}
