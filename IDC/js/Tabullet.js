@@ -150,6 +150,7 @@
                             options.action('edit', editData);
 
 
+
                             return;
                         }
 
@@ -174,11 +175,17 @@
                             var mapName = $(rv).attr('data-tabullet-map');  
                             if ($(rv).attr('data-tabullet-readonly') !== 'true') {
                                 //显示编辑过的数据
-                                $(rv).html('<input type="text" name="' + mapName + '" value="' + v[mapName] + '" class="' + options.textClass + '"/>');
-                                
+                                if ($(rv).attr('data-tabullet-map') == 'name'){
+                                    $(rv).html('<input type="text" name="' + mapName + '" value="' + v[mapName] + '" class="' + options.textClass + '"/>');
+                                }
+                                if ($(rv).attr('data-tabullet-map') == 'ip'){
+                                    $(rv).html('<input type="text" readonly="readonly" name="' + mapName + '" value="' + v[mapName] + '" class="noboder ' + options.textClass + '"/>');
+                                }
                                 
                             }
                         });
+                           //$('rowParent:nth-child(2)').find('input').attr('disabled', 'true');
+                           //console.log(rowParent:nth-child(2));
 
                         //编辑数据
                         $("#editing").click(function(){

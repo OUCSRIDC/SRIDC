@@ -397,3 +397,12 @@ table >tbody>tr:not(:first-child):hover {
     float: left;
     line-height: 2.5;
 }
+.noboder{
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 8px 0;
+    font-family: "Microsoft YaHei", Simsun, arial, 宋体;
+    vertical-align: top;
+    font-size: 12px;
+}
