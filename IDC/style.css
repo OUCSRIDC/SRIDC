@@ -410,3 +410,10 @@ table >tbody>tr:not(:first-child):hover {
     padding-top: 10px;
     display: none;
 }
+#innercontainer2 h2{
+    text-align: center;
+    margin: 22 auto;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}

@@ -104,7 +104,7 @@
 
 <!--Start||content-->
 <div class="wrapper content" id="container">
-	<div class="inner clearfix" id="innercontainer">
+	<div class="inner clearfix" id="innercontainer1">
 	  	<div class="mod clearfix"> 
 	    	<table class="table table-striped">
 	    		<thead>
@@ -149,6 +149,7 @@
 	    <button id="hist">查看历史</button>
     </div>
     <div class="inner clearfix" id="innercontainer2">
+    	<h2>历史记录</h2>
 	  	<div class="mod clearfix"> 
 	    	<table class="table table-striped">
 	    		<thead>
@@ -277,12 +278,14 @@ $(document).ready(function(){
               dataType: "json",
               success: function (data) {
                     if (data.Status == 200) {
+                    	$("#innercontainer1").css("display","none");
                     	$("#innercontainer2").css("display","block");
                         for (var i = 0; i < data.Data.length;i++){
 			                $("#detailData3").append("<tr><th>" + i + "</th><td>" + data.Data[i].Port + "</td><td>" + data.Data[i].Date + "</td><td>" + data.Data[i].Status + "</td></tr>");
 			            }
-			            
-			            $("#detailData4").append("<tr><th>" + 1 + "</th><td>" + data.OS1 + "</td><td>" + data.Disk + "</td><td>" + data.Memory + "</td><td>" + data.CPU1 + "</td></tr>");
+			            for (var j = 0; j < data.Data2.length;j++){
+			            	$("#detailData4").append("<tr><th>" + j + "</th><td>" + data.Data2[j].OS1 + "</td><td>" + data.Data2[j].Disk + "</td><td>" + data.Data2[j].Memory + "</td><td>" + data.Data2[j].CPU1 + "</td></tr>");
+			            }
 			        }
 			                  
 			   }
