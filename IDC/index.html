@@ -59,11 +59,11 @@
             success: function (data) {
                 if (data.Status == 200) {
                     source = data.Data;
-                    console.log(data.Data); 
-                    console.log(source);
+                    //console.log(data.Data); 
+                    //console.log(source);
                     
                     //导航栏添加用户名
-                    $("#userName").text(data.username);
+                    $("#userName").text(data.Data.username);
                 }
             },
         });
@@ -134,18 +134,14 @@
                                 </a>
                                 <!--[MenuStructBegin]-->
                                 <em class="menu-switch-arrow"></em>
-                                <ul class="sub-menu clearfix">
-                                    <!--[MenuItemCycleBegin]-->
+                                <!-- <ul class="sub-menu clearfix">
                                     <li class="sub-item {级别样式}">
                                         <a class="sub-link" href="{栏目URL}" target="{打开方式}">个人中心</a>
-                                        <!--[SubMenuList]-->
                                     </li>
                                     <li class="sub-item {级别样式}">
                                         <a class="sub-link" href="{栏目URL}" target="{打开方式}">设置</a>
-                                        <!--[SubMenuList]-->
                                     </li>
-                                    <!--[MenuItemCycleEnd]-->
-                                </ul>
+                                </ul> -->
                                 <!--[MenuStructEnd]-->
                             </li>
                             <!--[NaviItemCycleEnd]-->
@@ -188,22 +184,20 @@
     </div>
     <!--End||head-->
     <!--搜索开始-->
-    <div class="wrapper mbanner" id="mbanner">
+    <!-- <div class="wrapper mbanner" id="mbanner">
         <div class="inner clearfix">
             <div class="banner" frag="面板2">
                 <div frag="窗口2">
                     <div frag="窗口内容">
-                        <!--[InfoCycleBegin]-->
                         <form action="" method="post">
                             <input type="text" name="username" class="searchbox" value="Search">
                             <a href=""><i class="fa fa-search fa-2x"></i></a>
                         </form>
-                        <!--[InfoCycleEnd]-->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--//搜索结束-->
     <!--表格开始-->
     <div class="container wrapper content" id="container">
