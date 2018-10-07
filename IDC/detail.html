@@ -104,7 +104,7 @@
 
 <!--Start||content-->
 <div class="wrapper content" id="container">
-	<div class="inner clearfix">
+	<div class="inner clearfix" id="innercontainer">
 	  	<div class="mod clearfix"> 
 	    	<table class="table table-striped">
 	    		<thead>
@@ -147,6 +147,49 @@
 			</table>
 	    </div>
 	    <button id="hist">查看历史</button>
+    </div>
+    <div class="inner clearfix" id="innercontainer2">
+	  	<div class="mod clearfix"> 
+	    	<table class="table table-striped">
+	    		<thead>
+	    			<tr>
+	    				<th>#</th>
+	    				<th>Port-200</th>
+	    				<th>获取时间</th>
+	    				<th>获取情况</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody id="detailData3">
+	    			<!-- <tr>
+	    				<th>1</th>
+	    				<td>111111</td>
+	    				<td>ADMIN</td>
+	    			</tr> -->
+	    		</tbody>
+			</table>
+	    </div>
+	    <div class="mod clearfix" style="margin-top:10px !important;"> 
+	    	<table class="table table-striped">
+	    		<thead>
+	    			<tr>
+	    				<th>#</th>
+	    				<th>OS操作系统情况</th>
+	    				<th>Disk硬盘情况</th>
+	    				<th>Memory内存情况</th>
+	    				<th>CPU情况</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody id="detailData4">
+	    			<!-- <tr>
+	    				<th>1</th>
+	    				<td>ADMIN</td>
+	    				<td>ADMIN</td>
+	    				<td>ADMIN</td>
+	    				<td>ADMIN</td>
+	    			</tr> -->
+	    		</tbody>
+			</table>
+	    </div>
     </div>
 </div>
 <!--End||content-->
@@ -233,11 +276,15 @@ $(document).ready(function(){
               dataType: "json",
               success: function (data) {
                     if (data.Status == 200) {
-                        $("#detailData1").append("<tr><th>"+ 1 +"</th><td>"+ data.Data.Port +"</td><td>"+ data.Data.Date +"</td><td>"+ data.Data.Status +"</td></tr>");
-            			$("#detailData2").append("<tr><th>"+ 1 +"</th><td>"+ data.Data.OS1 +"</td><td>"+ data.Data.Disk +"</td><td>"+ data.Data.Memory +"</td><td>"+ operation.CPU1 +"</td></tr>");
-                    }
-                  
-              }
+                    	$("#innercontainer2").css("display","block");
+                        for (var i = 0; i < data.Data.length;i++){
+			                $("#detailData3").append("<tr><th>" + i + "</th><td>" + data.Data[i].Port + "</td><td>" + data.Data[i].Date + "</td><td>" + data.Data[i].Status + "</td></tr>");
+			            }
+			            
+			            $("#detailData4").append("<tr><th>" + 1 + "</th><td>" + data.OS1 + "</td><td>" + data.Disk + "</td><td>" + data.Memory + "</td><td>" + data.CPU1 + "</td></tr>");
+			        }
+			                  
+			   }
           });
       });
 });

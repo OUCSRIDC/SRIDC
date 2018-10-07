@@ -406,3 +406,7 @@ table >tbody>tr:not(:first-child):hover {
     vertical-align: top;
     font-size: 12px;
 }
+#innercontainer2{
+    padding-top: 10px;
+    display: none;
+}
