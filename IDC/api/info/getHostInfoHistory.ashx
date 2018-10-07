@@ -7,7 +7,7 @@ using System.Web.SessionState;
 using System.Linq;
 using Newtonsoft.Json;
 
-public class getHostInfoHistory : IHttpHandler {
+public class getHostInfoHistory : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
@@ -29,15 +29,14 @@ public class getHostInfoHistory : IHttpHandler {
                     //var hostinfo = db.HostInfo.FirstOrDefault(a => a.host_id == hostid);
                     foreach(var t in port)
                     {
-                        if (t.portInfo == "占用")
-                        {
-                            Ports hp = new Ports();
-                            hp.Uid = t.id;
-                            hp.Port = t.portNum;
-                            hp.Date = t.time;
-                            hp.Status = t.portInfo;
-                            data.Add(hp);
-                        }
+
+                        Ports hp = new Ports();
+                        hp.Uid = t.id;
+                        hp.Port = t.portNum;
+                        hp.Date = t.time;
+                        hp.Status = t.portInfo;
+                        data.Add(hp);
+
                     }
                     foreach(var t in hostinfo)
                     {

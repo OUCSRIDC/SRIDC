@@ -264,7 +264,8 @@ $(document).ready(function(){
 
 
    //历史记录
-   $("#hist").click(function () {
+  $("#hist").click(function () {
+      var hostip = sessionStorage.getItem("hostip");
           $.ajax({
               type: "POST",
               url: "api/info/getHostInfoHistory.ashx",
