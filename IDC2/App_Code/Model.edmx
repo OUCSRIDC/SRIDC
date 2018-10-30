@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Host">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HostInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="host_id" Type="int" Nullable="false" />
+          <Property Name="osInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="diskInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memoryInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cpuInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HostPortInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="host_id" Type="int" Nullable="false" />
+          <Property Name="portInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="time" Type="datetime" Nullable="false" />
+          <Property Name="portNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IDCModelStoreContainer">
+          <EntitySet Name="Host" EntityType="Self.Host" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostInfo" EntityType="Self.HostInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostPortInfo" EntityType="Self.HostPortInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Host">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HostInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="host_id" Type="Int32" Nullable="false" />
+          <Property Name="osInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="diskInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memoryInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cpuInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="HostPortInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="host_id" Type="Int32" Nullable="false" />
+          <Property Name="portInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="portNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IDCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Host" EntityType="Self.Host" />
+          <EntitySet Name="HostInfo" EntityType="Self.HostInfo" />
+          <EntitySet Name="HostPortInfo" EntityType="Self.HostPortInfo" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IDCModelStoreContainer" CdmEntityContainer="IDCEntities">
+          <EntitySetMapping Name="Host">
+            <EntityTypeMapping TypeName="IDCModel.Host">
+              <MappingFragment StoreEntitySet="Host">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostInfo">
+            <EntityTypeMapping TypeName="IDCModel.HostInfo">
+              <MappingFragment StoreEntitySet="HostInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="host_id" ColumnName="host_id" />
+                <ScalarProperty Name="osInfo" ColumnName="osInfo" />
+                <ScalarProperty Name="diskInfo" ColumnName="diskInfo" />
+                <ScalarProperty Name="memoryInfo" ColumnName="memoryInfo" />
+                <ScalarProperty Name="cpuInfo" ColumnName="cpuInfo" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostPortInfo">
+            <EntityTypeMapping TypeName="IDCModel.HostPortInfo">
+              <MappingFragment StoreEntitySet="HostPortInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="host_id" ColumnName="host_id" />
+                <ScalarProperty Name="portInfo" ColumnName="portInfo" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="portNum" ColumnName="portNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IDCModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
