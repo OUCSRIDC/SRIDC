@@ -37,20 +37,22 @@ def get_ip(domain):
 
 
 def postInfo(domain):
+    domain = domain.replace('\n', '')
     isIPV4, isIPV6, isRight = get_ip(domain)
     s = requests.session()
     url = getUrl()
     data = {"ip": domain, "isIPV4": isIPV4, "isIPV6": isIPV6, "isRight": isRight,
             "time": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-    s.post("http://localhost:49890/Ajax/setHostInfoIP.ashx", data=data)
+    # s.post("http://localhost:49890/Ajax/setHostInfoIP.ashx", data=data)
 
 
 if __name__ == "__main__":
     domain = getUrl()
     domains = domain.split(",")
     for i in range(len(domains)):
-        print(domains[i])
-        postInfo(domains[i])
+        if domains[i] != "\n":
+            print(domains[i])
+            postInfo(domains[i])
 
     # get_ip("www.ouc.edu.cn")
     # get_ip("www.baidu.com")
