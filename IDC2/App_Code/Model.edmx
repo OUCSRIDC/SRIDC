@@ -5,39 +5,44 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="IDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“IDC2.dbo.Host”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="Host">
           <Key>
             <PropertyRef Name="id" />
+            <PropertyRef Name="ip" />
+            <PropertyRef Name="name" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ip" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“IDC2.dbo.HostInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="HostInfo">
           <Key>
             <PropertyRef Name="id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="ipv4" />
+            <PropertyRef Name="ipv6" />
+            <PropertyRef Name="isright" />
+            <PropertyRef Name="time" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="host_id" Type="int" Nullable="false" />
-          <Property Name="osInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="diskInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="memoryInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="cpuInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ipv4" Type="int" Nullable="false" />
+          <Property Name="ipv6" Type="int" Nullable="false" />
+          <Property Name="isright" Type="int" Nullable="false" />
           <Property Name="time" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="HostPortInfo">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="host_id" Type="int" Nullable="false" />
-          <Property Name="portInfo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="time" Type="datetime" Nullable="false" />
-          <Property Name="portNum" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“IDC2.dbo.Users”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
+            <PropertyRef Name="username" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="email" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -45,10 +50,31 @@
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityContainer Name="IDCModelStoreContainer">
-          <EntitySet Name="Host" EntityType="Self.Host" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HostInfo" EntityType="Self.HostInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HostPortInfo" EntityType="Self.HostPortInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Host" EntityType="Self.Host" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Host].[id] AS [id], 
+    [Host].[ip] AS [ip], 
+    [Host].[name] AS [name]
+    FROM [dbo].[Host] AS [Host]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HostInfo" EntityType="Self.HostInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HostInfo].[id] AS [id], 
+    [HostInfo].[host_id] AS [host_id], 
+    [HostInfo].[ipv4] AS [ipv4], 
+    [HostInfo].[ipv6] AS [ipv6], 
+    [HostInfo].[isright] AS [isright], 
+    [HostInfo].[time] AS [time]
+    FROM [dbo].[HostInfo] AS [HostInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Users].[id] AS [id], 
+    [Users].[username] AS [username], 
+    [Users].[password] AS [password], 
+    [Users].[email] AS [email]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -58,6 +84,8 @@
         <EntityType Name="Host">
           <Key>
             <PropertyRef Name="id" />
+            <PropertyRef Name="ip" />
+            <PropertyRef Name="name" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -66,28 +94,25 @@
         <EntityType Name="HostInfo">
           <Key>
             <PropertyRef Name="id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="ipv4" />
+            <PropertyRef Name="ipv6" />
+            <PropertyRef Name="isright" />
+            <PropertyRef Name="time" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="host_id" Type="Int32" Nullable="false" />
-          <Property Name="osInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="diskInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="memoryInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="cpuInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ipv4" Type="Int32" Nullable="false" />
+          <Property Name="ipv6" Type="Int32" Nullable="false" />
+          <Property Name="isright" Type="Int32" Nullable="false" />
           <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="HostPortInfo">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="host_id" Type="Int32" Nullable="false" />
-          <Property Name="portInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="portNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
+            <PropertyRef Name="username" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="email" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -97,7 +122,6 @@
         <EntityContainer Name="IDCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Host" EntityType="Self.Host" />
           <EntitySet Name="HostInfo" EntityType="Self.HostInfo" />
-          <EntitySet Name="HostPortInfo" EntityType="Self.HostPortInfo" />
           <EntitySet Name="Users" EntityType="Self.Users" />
         </EntityContainer>
       </Schema>
@@ -120,22 +144,10 @@
               <MappingFragment StoreEntitySet="HostInfo">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="host_id" ColumnName="host_id" />
-                <ScalarProperty Name="osInfo" ColumnName="osInfo" />
-                <ScalarProperty Name="diskInfo" ColumnName="diskInfo" />
-                <ScalarProperty Name="memoryInfo" ColumnName="memoryInfo" />
-                <ScalarProperty Name="cpuInfo" ColumnName="cpuInfo" />
+                <ScalarProperty Name="ipv4" ColumnName="ipv4" />
+                <ScalarProperty Name="ipv6" ColumnName="ipv6" />
+                <ScalarProperty Name="isright" ColumnName="isright" />
                 <ScalarProperty Name="time" ColumnName="time" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HostPortInfo">
-            <EntityTypeMapping TypeName="IDCModel.HostPortInfo">
-              <MappingFragment StoreEntitySet="HostPortInfo">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="host_id" ColumnName="host_id" />
-                <ScalarProperty Name="portInfo" ColumnName="portInfo" />
-                <ScalarProperty Name="time" ColumnName="time" />
-                <ScalarProperty Name="portNum" ColumnName="portNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

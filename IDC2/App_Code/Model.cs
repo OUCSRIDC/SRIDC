@@ -21,20 +21,10 @@ public partial class HostInfo
 {
     public int id { get; set; }
     public int host_id { get; set; }
-    public string osInfo { get; set; }
-    public string diskInfo { get; set; }
-    public string memoryInfo { get; set; }
-    public string cpuInfo { get; set; }
+    public int ipv4 { get; set; }
+    public int ipv6 { get; set; }
+    public int isright { get; set; }
     public System.DateTime time { get; set; }
-}
-
-public partial class HostPortInfo
-{
-    public int id { get; set; }
-    public int host_id { get; set; }
-    public string portInfo { get; set; }
-    public System.DateTime time { get; set; }
-    public string portNum { get; set; }
 }
 
 public partial class Users

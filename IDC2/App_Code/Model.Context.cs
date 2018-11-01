@@ -25,6 +25,5 @@ public partial class IDCEntities : DbContext
 
     public virtual DbSet<Host> Host { get; set; }
     public virtual DbSet<HostInfo> HostInfo { get; set; }
-    public virtual DbSet<HostPortInfo> HostPortInfo { get; set; }
     public virtual DbSet<Users> Users { get; set; }
 }
