@@ -33,18 +33,24 @@ def get_ip(domain):
                 result.append(list_result[i].replace('\t', ''))
         print(result)
         print(isIPV4, isIPV6)
-        return is
+        return isIPV4, isIPV6, isRight
 
 
-def postInfo():
+def postInfo(domain):
+    isIPV4, isIPV6, isRight = get_ip(domain)
     s = requests.session()
     url = getUrl()
-    data = {"host_id": function.ipInfo(), "osInfo": function.osInfo(), "diskInfo": function.diskInfo(),
-            "memoryInfo": function.memInfo(), "cpuInfo": function.cpuInfo(), "portInfo": function.portInfo(),
+    data = {"ip": domain, "isIPV4": isIPV4, "isIPV6": isIPV6, "isRight": isRight,
             "time": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-    s.post("http://localhost:49890/Ajax/setHardwareInfo.ashx", data=data)
+    s.post("http://localhost:49890/Ajax/setHostInfoIP.ashx", data=data)
 
 
 if __name__ == "__main__":
-    get_ip("www.ouc.edu.cn")
+    domain = getUrl()
+    domains = domain.split(",")
+    for i in range(len(domains)):
+        print(domains[i])
+        postInfo(domains[i])
+
+    # get_ip("www.ouc.edu.cn")
     # get_ip("www.baidu.com")
