@@ -110,37 +110,16 @@
 	    		<thead>
 	    			<tr>
 	    				<th>#</th>
-	    				<th>Port-200</th>
-	    				<th>获取时间</th>
-	    				<th>获取情况</th>
+	    				<th>是否支持IPV4</th>
+	    				<th>是否支持IPV6</th>
+	    				<th>是否访问成功</th>
+	    				<th>时间</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody id="detailData1">
 	    			<!-- <tr>
 	    				<th>1</th>
 	    				<td>111111</td>
-	    				<td>ADMIN</td>
-	    			</tr> -->
-	    		</tbody>
-			</table>
-	    </div>
-	    <div class="mod clearfix" style="margin-top:10px !important;"> 
-	    	<table class="table table-striped">
-	    		<thead>
-	    			<tr>
-	    				<th>#</th>
-	    				<th>OS操作系统情况</th>
-	    				<th>Disk硬盘情况</th>
-	    				<th>Memory内存情况</th>
-	    				<th>CPU情况</th>
-	    			</tr>
-	    		</thead>
-	    		<tbody id="detailData2">
-	    			<!-- <tr>
-	    				<th>1</th>
-	    				<td>ADMIN</td>
-	    				<td>ADMIN</td>
-	    				<td>ADMIN</td>
 	    				<td>ADMIN</td>
 	    			</tr> -->
 	    		</tbody>
@@ -155,37 +134,16 @@
 	    		<thead>
 	    			<tr>
 	    				<th>#</th>
-	    				<th>Port-200</th>
-	    				<th>获取时间</th>
-	    				<th>获取情况</th>
+	    				<th>是否支持IPV4</th>
+	    				<th>是否支持IPV6</th>
+	    				<th>是否访问成功</th>
+	    				<th>时间</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody id="detailData3">
 	    			<!-- <tr>
 	    				<th>1</th>
 	    				<td>111111</td>
-	    				<td>ADMIN</td>
-	    			</tr> -->
-	    		</tbody>
-			</table>
-	    </div>
-	    <div class="mod clearfix" style="margin-top:10px !important;"> 
-	    	<table class="table table-striped">
-	    		<thead>
-	    			<tr>
-	    				<th>#</th>
-	    				<th>OS操作系统情况</th>
-	    				<th>Disk硬盘情况</th>
-	    				<th>Memory内存情况</th>
-	    				<th>CPU情况</th>
-	    			</tr>
-	    		</thead>
-	    		<tbody id="detailData4">
-	    			<!-- <tr>
-	    				<th>1</th>
-	    				<td>ADMIN</td>
-	    				<td>ADMIN</td>
-	    				<td>ADMIN</td>
 	    				<td>ADMIN</td>
 	    			</tr> -->
 	    		</tbody>
@@ -249,16 +207,9 @@ $(document).ready(function(){
     success:function(data) {    
         if (data.Status == '200') {
             for (var i = 0; i < data.Data.length;i++){
-                $("#detailData1").append("<tr><th>" + i + "</th><td>" + data.Data[i].Port + "</td><td>" + data.Data[i].Date + "</td><td>" + data.Data[i].Status + "</td></tr>");
+                $("#detailData1").append("<tr><th>" + i + "</th><td>" + data.Data[i].ipv4 + "</td><td>" + data.Data[i].ipv6 + "</td><td>" + data.Data[i].isright + "</td><td>" + data.Data[i].time + "</td></tr>");
             }
-
-
-
-
-            
-            $("#detailData2").append("<tr><th>" + 1 + "</th><td>" + data.OS1 + "</td><td>" + data.Disk + "</td><td>" + data.Memory + "</td><td>" + data.CPU1 + "</td></tr>");
-         }
-		
+        }
 	}
 });
    })() 
@@ -281,11 +232,9 @@ $(document).ready(function(){
                     	$("#innercontainer1").css("display","none");
                     	$("#innercontainer2").css("display","block");
                         for (var i = 0; i < data.Data.length;i++){
-			                $("#detailData3").append("<tr><th>" + i + "</th><td>" + data.Data[i].Port + "</td><td>" + data.Data[i].Date + "</td><td>" + data.Data[i].Status + "</td></tr>");
+			                $("#detailData3").append("<tr><th>" + i + "</th><td>" + data.Data[i].ipv4 + "</td><td>" + data.Data[i].ipv6 + "</td><td>" + data.Data[i].isright + "</td><td>" + data.Data[i].time + "</td></tr>");
 			            }
-			            for (var j = 0; j < data.Data2.length;j++){
-			            	$("#detailData4").append("<tr><th>" + j + "</th><td>" + data.Data2[j].OS1 + "</td><td>" + data.Data2[j].Disk + "</td><td>" + data.Data2[j].Memory + "</td><td>" + data.Data2[j].CPU1 + "</td></tr>");
-			            }
+			            
 			        }
 			                  
 			   }
