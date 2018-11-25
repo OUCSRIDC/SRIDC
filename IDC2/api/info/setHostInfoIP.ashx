@@ -24,7 +24,7 @@ public class setHostInfoIP : IHttpHandler {
                 newHost.isright = isRight == "True" ? 1 : 0;
                 newHost.time = Convert.ToDateTime(time);
                 db.HostInfo.Add(newHost);
-
+                db.SaveChanges();
             }
         }
 

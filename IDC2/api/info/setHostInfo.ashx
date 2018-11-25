@@ -4,6 +4,7 @@ using System;
 using System.Web;
 using Newtonsoft.Json;
 using System.Web.SessionState;
+using System.IO;
 public class setHostInfo : IHttpHandler, IRequiresSessionState {
 
     public void ProcessRequest(HttpContext context)
@@ -25,7 +26,19 @@ public class setHostInfo : IHttpHandler, IRequiresSessionState {
                         host.ip = ip;
                         host.name = name;
                         db.Host.Add(host);
+                        
+                        string filePath = "D:/document/GitHub/SRIDC/IDC2/python/url.txt";
+                        //检测文件夹是否存在，不存在则创建
+                        //FileStream fs = new FileStream(filePath, FileMode.Create);
+                        StreamWriter sw = File.AppendText(filePath);
+                        //开始写入
+                        sw.Write(ip+",");
+                        //清空缓冲区
+                        sw.Flush();
+                        //关闭流
+                        sw.Close();
                         db.SaveChanges();
+                        //fs.Close();
                         shi.Status = 200;
                     }
                 }

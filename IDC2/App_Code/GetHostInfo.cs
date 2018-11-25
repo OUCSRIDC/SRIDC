@@ -9,11 +9,7 @@ using System.Web;
 public class GetHostInfo
 {
     private int status;
-    private List<Ports> data;
-    private string disk;
-    private string CPU;
-    private string memory;
-    private string OS;
+    private List<HostInfo> data;
 
     public int Status
     {
@@ -28,7 +24,7 @@ public class GetHostInfo
         }
     }
 
-    public List<Ports> Data
+    public List<HostInfo> Data
     {
         get
         {
@@ -41,57 +37,6 @@ public class GetHostInfo
         }
     }
 
-    public string Disk
-    {
-        get
-        {
-            return disk;
-        }
-
-        set
-        {
-            disk = value;
-        }
-    }
-
-    public string CPU1
-    {
-        get
-        {
-            return CPU;
-        }
-
-        set
-        {
-            CPU = value;
-        }
-    }
-
-    public string Memory
-    {
-        get
-        {
-            return memory;
-        }
-
-        set
-        {
-            memory = value;
-        }
-    }
-
-    public string OS1
-    {
-        get
-        {
-            return OS;
-        }
-
-        set
-        {
-            OS = value;
-        }
-    }
 
     public GetHostInfo()
     {
