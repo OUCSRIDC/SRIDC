@@ -27,10 +27,20 @@ public partial class HostInfo
     public System.DateTime time { get; set; }
 }
 
+public partial class LoginInfo
+{
+    public int id { get; set; }
+    public string username { get; set; }
+    public string ip { get; set; }
+    public System.DateTime logintime { get; set; }
+    public int status { get; set; }
+}
+
 public partial class Users
 {
     public int id { get; set; }
     public string username { get; set; }
     public string password { get; set; }
     public string email { get; set; }
+    public int status { get; set; }
 }

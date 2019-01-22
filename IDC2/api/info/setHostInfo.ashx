@@ -27,16 +27,16 @@ public class setHostInfo : IHttpHandler, IRequiresSessionState {
                         host.name = name;
                         db.Host.Add(host);
                         
-                        string filePath = "D:/document/GitHub/SRIDC/IDC2/python/url.txt";
+                        //string filePath = "D:/document/GitHub/SRIDC/IDC2/python/url.txt";
                         //检测文件夹是否存在，不存在则创建
                         //FileStream fs = new FileStream(filePath, FileMode.Create);
-                        StreamWriter sw = File.AppendText(filePath);
+                        //StreamWriter sw = File.AppendText(filePath);
                         //开始写入
-                        sw.Write(ip+",");
+                        //sw.Write(ip+",");
                         //清空缓冲区
-                        sw.Flush();
+                        //sw.Flush();
                         //关闭流
-                        sw.Close();
+                        //sw.Close();
                         db.SaveChanges();
                         //fs.Close();
                         shi.Status = 200;

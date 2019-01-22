@@ -23,6 +23,7 @@ public partial class Ajax_addNew : System.Web.UI.Page
             us.username = username;
             us.password = pwd;
             us.email = "77@qq.com";
+            us.status = 1;
             db.Users.Add(us);
             db.SaveChanges();
             Response.Write("<script>alert('新建成功！')<script>");
