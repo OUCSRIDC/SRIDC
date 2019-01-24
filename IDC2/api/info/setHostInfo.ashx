@@ -13,6 +13,7 @@ public class setHostInfo : IHttpHandler, IRequiresSessionState {
         string username = context.Request["username"];
         string ip = context.Request["ip"];
         string name = context.Request["name"];
+        string type = context.Request["type"];
         SetHostInfo shi = new SetHostInfo();
         if (HttpContext.Current.Session["username"] != null)
         {
@@ -25,8 +26,9 @@ public class setHostInfo : IHttpHandler, IRequiresSessionState {
                         Host host = new Host();
                         host.ip = ip;
                         host.name = name;
+                        host.type = type;
                         db.Host.Add(host);
-                        
+
                         //string filePath = "D:/document/GitHub/SRIDC/IDC2/python/url.txt";
                         //检测文件夹是否存在，不存在则创建
                         //FileStream fs = new FileStream(filePath, FileMode.Create);
